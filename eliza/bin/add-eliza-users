@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Add user accounts needed by ELIZA
+
+adduserctss -c "ELIZA" eliza 10 eliza
+adduserctss -c "SLIP"  slip  11 slip
+echo Added ELIZA and SLIP users

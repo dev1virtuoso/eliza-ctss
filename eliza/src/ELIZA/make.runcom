@@ -1,0 +1,19 @@
+$ ==== Removing old files
+$ Ignore any messages like NO FILES WITH SECOND NAME
+DELETE * BCD
+DELETE * BSS
+$ ==== Compiling ELIZA
+$ Compiling CHANGE
+MAD change (LIST)
+$ Compiling DOCBCD
+MAD docbcd (LIST)
+$ Compiling ELIZA
+MAD eliza (LIST)
+$ Compiling LPRINT
+MAD lprint (LIST)
+$ Compiling TESTS
+MAD tests (LIST)
+$ Compiling TPRINT
+MAD tprint (LIST)
+$ ==== Loading ELIZA
+LOAD eliza

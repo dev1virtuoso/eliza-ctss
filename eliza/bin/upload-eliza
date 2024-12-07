@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Upload all ELIZA files
+
+echo Uploading ELIZA source
+for file in eliza/src/ELIZA/*.mad
+do
+    upload ELIZA $file
+done
+
+echo Uploading ELIZA runcoms
+for file in eliza/src/ELIZA/*.runcom
+do
+    upload ELIZA $file
+done

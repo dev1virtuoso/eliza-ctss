@@ -1,0 +1,95 @@
+$ telnet 127.0.0.1 7094
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+s709 2.4.1 COMM tty0 (KSR-37) from 127.0.0.1
+
+MIT8C0: 1 USER AT 12/07/14 1136.1, MAX = 30
+READY.                                     
+      
+login eliza
+W 1136.2
+Password
+ M1416    10 LOGGED IN  12/07/14 1136.2 FROM 700000
+ LAST LOGOUT WAS  12/06/14 1540.3 FROM 700000      
+ HOME FILE DIRECTORY IS M1416 ELIZA          
+                                   
+THIS IS A RECONSTRUCTED CTSS SYSTEM.
+IT IS A DEBUG AND NOT FULLY FUNCTIONAL VERSION.
+                                               
+ CTSS BEING USED IS: MIT8C0
+R .033+.000                
+           
+listf
+W 1136.5
+        
+     7 FILES    18 RECORDS
+ NAME1  NAME2 MOD NOREC   USED
+  MAKE RUNCOM 000     1 12/06/14
+CHANGE    MAD 000     3         
+DOCBCD    MAD 000     1
+ ELIZA    MAD 000     7
+LPRINT    MAD 000     2
+ TESTS    MAD 000     2
+TPRINT    MAD 000     2
+                       
+
+R .016+.000
+           
+listf * mad
+W 1136.9
+        
+     6 FILES    17 RECORDS
+ NAME1  NAME2 MOD NOREC   USED
+CHANGE    MAD 000     3 12/06/14
+DOCBCD    MAD 000     1         
+ ELIZA    MAD 000     7
+LPRINT    MAD 000     2
+ TESTS    MAD 000     2
+TPRINT    MAD 000     2
+                       
+
+R .016+.016
+
+mad eliza
+W 1137.2
+LENGTH 01521.  TV SIZE 00042.  ENTRY 00217
+R .083+.050                               
+           
+mad eliza (list)
+W 1137.3
+LENGTH 01521.  TV SIZE 00042.  ENTRY 00217
+R .133+.033                               
+           
+listf eliza * 
+W 1137.7
+        
+     3 FILES    42 RECORDS
+ NAME1  NAME2 MOD NOREC   USED
+ ELIZA    BSS 000     4 12/07/14
+ ELIZA    BCD 000    31         
+ ELIZA    MAD 000     7
+                       
+
+R .016+.000
+           
+p eliza bcd
+W 1138.0
+        
+
+     MAD PROGRAM LISTING ... ... ...		   FILE	ELIZA   MAD	   12/0
+                                                                               
+
+
+	     NORMAL MODE IS INTEGER
+	     DIMENSION KEY(32),MYTRAN(4)
+
+[rest of file skipped]
+
+logout
+W 1139.0
+ M1416    10 LOGGED OUT 12/07/14 1139.0 FROM 700000
+ TOTAL TIME USED =    .0 MIN.                      
+Connection closed by foreign host.
+$
+

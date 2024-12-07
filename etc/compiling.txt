@@ -1,0 +1,156 @@
+$ telnet 127.0.0.1 7094
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+s709 2.4.1 COMM tty0 (KSR-37) from 127.0.0.1
+
+MIT8C0: 1 USER AT 12/07/14 1240.4, MAX = 30
+READY.                                     
+      
+login slip
+W 1240.4
+Password
+ M1416    11 LOGGED IN  12/07/14 1240.5 FROM 700000
+ LAST LOGOUT WAS  12/07/14 1136.1 FROM 700000      
+ HOME FILE DIRECTORY IS M1416 SLIP           
+                                  
+THIS IS A RECONSTRUCTED CTSS SYSTEM.
+IT IS A DEBUG AND NOT FULLY FUNCTIONAL VERSION.
+                                               
+ CTSS BEING USED IS: MIT8C0
+R .050+.000                
+           
+runcom make
+W 1240.5
+  MAKE STARTED
+$ ==== REMOVING OLD FILES
+$ IGNORE ANY MESSAGES LIKE NO FILES WITH SECOND NAME
+$ ==== COMPILING SLIP FAP                           
+$ IGNORE ANY TD WARNING LINES PRINTED
+$ COMPILING ADV                      
+00090     TD           TXH     X
+00099     TD           TXH     *
+     LENGTH   221               
+$ COMPILING HASH 
+     LENGTH    21
+$ COMPILING INIT 
+00039     TD           TXH     LIST
+00091     TD           TXH     NAME
+00096     TD           TXH     THOUS
+     LENGTH  2136                   
+$ COMPILING LSTMT
+     LENGTH    22
+$ COMPILING MANY 
+00023     TD           TXH     PARM
+00024     TD           TXH     LNAME
+     LENGTH    44                   
+$ COMPILING MEMST
+     LENGTH    10
+$ COMPILING PRINIT
+     LENGTH    75 
+$ COMPILING PUTGET
+     LENGTH    73 
+$ COMPILING SQIN 
+     LENGTH   107
+$ ==== COMPILING SLIP CORE
+$ COMPILING ADAS          
+LENGTH 00105.  TV SIZE 00006.  ENTRY 00027
+$ COMPILING EQUAL                         
+LENGTH 00056.  TV SIZE 00001.  ENTRY 00010
+$ COMPILING ERARDR                        
+LENGTH 00061.  TV SIZE 00004.  ENTRY 00013
+$ COMPILING IRALST                        
+LENGTH 00145.  TV SIZE 00007.  ENTRY 00016
+$ COMPILING ITSVAL                        
+LENGTH 00077.  TV SIZE 00005.  ENTRY 00013
+$ COMPILING LCNTR                         
+LENGTH 00072.  TV SIZE 00005.  ENTRY 00013
+$ COMPILING LIST                          
+LENGTH 00101.  TV SIZE 00004.  ENTRY 00014
+$ COMPILING LISTMT                        
+LENGTH 00061.  TV SIZE 00003.  ENTRY 00012
+$ COMPILING LISTRD                        
+LENGTH 01146.  TV SIZE 00024.  ENTRY 00202.  FIRST UNUSED COMMON 77313.
+$ COMPILING MADATR                                                     
+LENGTH 00130.  TV SIZE 00005.  ENTRY 00016
+$ COMPILING MADIN                         
+LENGTH 00042.  TV SIZE 00001.  ENTRY 00004
+$ COMPILING MAKEDL                        
+LENGTH 00144.  TV SIZE 00007.  ENTRY 00017
+$ COMPILING NAMTST                        
+LENGTH 00116.  TV SIZE 00006.  ENTRY 00020
+$ COMPILING NEWTOP                        
+LENGTH 00173.  TV SIZE 00011.  ENTRY 00022
+$ COMPILING NEWVAL                        
+LENGTH 00152.  TV SIZE 00012.  ENTRY 00023
+$ COMPILING NOATVL                        
+LENGTH 00065.  TV SIZE 00005.  ENTRY 00012
+$ COMPILING POPPER                        
+LENGTH 00064.  TV SIZE 00005.  ENTRY 00012
+$ COMPILING PUT                           
+LENGTH 00142.  TV SIZE 00007.  ENTRY 00016.  FIRST UNUSED COMMON 77313.
+$ COMPILING READER                                                     
+LENGTH 00066.  TV SIZE 00004.  ENTRY 00012
+$ COMPILING REMOVE                        
+LENGTH 00141.  TV SIZE 00010.  ENTRY 00026
+$ COMPILING RVECT                         
+LENGTH 00066.  TV SIZE 00003.  ENTRY 00012
+$ COMPILING SEQRDR                        
+LENGTH 00033.  TV SIZE 00002.  ENTRY 00006
+$ COMPILING SUBST                         
+LENGTH 00205.  TV SIZE 00011.  ENTRY 00021
+$ COMPILING TOP                           
+LENGTH 00064.  TV SIZE 00004.  ENTRY 00012
+$ COMPILING XMINO                         
+LENGTH 00044.  TV SIZE 00001.  ENTRY 00005
+$ COMPILING LETTER                        
+LENGTH 00171.  TV SIZE 00002.  ENTRY 00114
+$ ==== COMPILING SLIP TESTS               
+$ COMPILING TESTLT         
+LENGTH 00246.  TV SIZE 00005.  ENTRY 00041
+$ ==== COMBINING THE LIBRARY              
+$ ==== RUNNING TESTS        
+$ THIS SHOULD PRINT TESTING LETTER ONLY IF ALL OK
+EXECUTION.                                       
+TESTING LETTER
+  MAKE HAS BEEN RUN
+R 1.783+1.016      
+             
+login eliza
+W 1241.1
+Password                                                                        M1416    11 LOGGED OUT 12/07/14 1241.2 FROM 700000
+ TOTAL TIME USED =    .0 MIN.                   
+ M1416    10 LOGGED IN  12/07/14 1241.2 FROM 700000
+ LAST LOGOUT WAS  12/07/14 1139.0 FROM 700000      
+ HOME FILE DIRECTORY IS M1416 ELIZA          
+                                   
+THIS IS A RECONSTRUCTED CTSS SYSTEM.
+IT IS A DEBUG AND NOT FULLY FUNCTIONAL VERSION.
+                                               
+ CTSS BEING USED IS: MIT8C0
+R .016+.000                
+           
+runcom make
+W 1241.3
+  MAKE STARTED
+$ ==== COMPILING ELIZA
+$ COMPILING CHANGE    
+LENGTH 00655.  TV SIZE 00030.  ENTRY 00130
+$ COMPILING DOCBCD                        
+LENGTH 00060.  TV SIZE 00003.  ENTRY 00012
+$ COMPILING ELIZA                         
+LENGTH 01521.  TV SIZE 00042.  ENTRY 00217
+$ COMPILING LPRINT                        
+LENGTH 00211.  TV SIZE 00011.  ENTRY 00034
+$ COMPILING TESTS                         
+LENGTH 00276.  TV SIZE 00012.  ENTRY 00051
+$ COMPILING TPRINT                        
+LENGTH 00206.  TV SIZE 00014.  ENTRY 00040
+$ ==== LOADING ELIZA                      
+ NEED ASSMBL BOT    CHANGE HASH   INITAS IRALST LISTMT
+      LISTRD LIST   LPRINT LSPNTR LSSCPY LSTNAM MTLIST
+      NEWBOT NEWTOP NODLST NULSTL NULSTR POPTOP REGEL 
+      SEQLL  SEQLR  SEQRDR SUBST  TESTS  TOP    TREAD
+      TXTPRT YMATCH                                  
+R .466+.266        
+           

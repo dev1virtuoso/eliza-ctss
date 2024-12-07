@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Upload all SLIP and ELIZA files
+
+upload-slip
+upload-eliza

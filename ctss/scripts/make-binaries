@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Make the binaries for s709 and utilities, then install in ctss/bin
+
+rm -rf ctss/src/ ctss/bin/
+mkdir -p ctss/src/ ctss/bin/
+cd ctss/src/
+tar xzf ../dist/s709-2.4.1.tar.gz
+cd s709-2.4.1
+make
+cp s709 bcd2txt bcd2bin bcd2cbn bin2bcd bin2txt cbn2bcd crd2cbn txt2bcd \
+   txt2bin gendate genext ../../bin
+
+cd ..
+tar xzf ../dist/utils-1.1.14.tar.gz
+cd utils
+make clean
+make
+cp obj2bin obj2img bd bsplit bincmp disasm gelbl2txt mkdasd \
+   patchdasd bss2obj stripbss punchctss plotcvt useraddctss \
+   userdelctss userreportctss ../../bin
+   

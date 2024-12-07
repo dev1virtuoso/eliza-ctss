@@ -1,0 +1,26 @@
+ M1416    10 LOGGED IN  12/07/14 1136.2 FROM 700000   USERS= 02         
+ M1416    10 LOGGED OUT 12/07/14 1139.0 FROM 700000   USERS= 01       TOTAL TIME USED =    .0 MIN.HANGUP
+^C
+.ek 40017                                                
+
+.st                                                      
+
+
+ KEYS READ. 000000040017  AT  1141.6                                    
+ C0056 99995 LOGGED OUT 12/07/14 1141.6 FROM (FIB)    USERS= 00       TOTAL TIME USED =    .0 MIN.
+ ALL FOREGROUND USERS LOGGED OUT. DO NOT CLEAR CORE.                    ^C
+.ek 0                                                    
+
+.st                                                      
+
+
+ KEYS 000000000000  AT  1141.6                                          ^C
+.ek 40032                                                
+
+.st                                                      
+
+
+ KEYS READ. 000000040032  AT  1141.6                                    
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+.qt                                                      
+$

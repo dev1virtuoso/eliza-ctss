@@ -1,0 +1,314 @@
+$ source env.sh
+CTSS environment set. DASD=dasd PORT=7094
+$ make-disks
+Creating disks
+Creating drums
+Done
+total 465M
+231M DISK1.BIN  231M DISK2.BIN  1.1M DRUM1.BIN  1.2M DRUM2.BIN  1.2M DRUM3.BIN
+$ format-disks
+Press Enter twice, then wait around a minute
+for disks to finish formatting. When QUIT appears
+type q and press Enter
+
+IBM 7094-CTSS Simulator 2.4.1
+
+.st                                                      
+
+
+.st                                                      
+
+
+* JUST FORMAT                                                           
+DSKFMT 0 1 250                                                          
+DSKFMT 1 1 250                                                          
+DSKFMT 2 1 250                                                          
+DSKFMT 3 1 250                                                          
+DSKFMT 4 1 250                                                          
+DSKFMT 5 1 250                                                          
+DSKFMT 6 1 250                                                          
+DSKFMT 7 1 250                                                          
+DRMFMT 8 1 1                                                            
+DSKREC 0 0 10000                                                        
+DSKREC 1 0 10000                                                        
+DSKREC 2 0 10000                                                        
+DSKREC 3 0 10000                                                        
+DSKREC 4 0 10000                                                        
+DSKREC 5 0 10000                                                        
+DSKREC 6 0 10000                                                        
+DSKREC 7 0 10000                                                        
+DRMREC 8 0 400                                                          
+SETMFD 1 8                                                              
+QUIT                                                                    
+.q                                                      
+
+$ install-disk-loader 
+Press Enter 4 times, then wait. When QUIT appears
+type q and press Enter
+
+IBM 7094-CTSS Simulator 2.4.1
+
+.st                                                      
+
+
+.st                                                      
+
+
+* SET UP THE LOADER                                                     
+LOADER 0                                                                
+ SET SWITCHES IN '65K' MODE AND PRESS START.                            
+.st                                                      
+
+
+                                                                        
+ SET SWITCHES IN '32K' MODE AND PRESS START.                            
+.st                                                      
+
+
+                                                                        
+QUIT                                                                    
+.q                                                      
+
+$ installctss
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ADDING UFD  M1416 CMFL01                                               
+ ADDING UFD  M1416 CMFL02                                               
+ ADDING UFD  M1416 CMFL03                                               
+ ADDING UFD  M1416 CMFL04                                               
+ ADDING UFD  M1416 CMFL05                                               
+ ADDING UFD  C0056 DAEMON                                               
+ ADDING UFD  C0056 FIBMON                                               
+ ADDING UFD  M1416 ADMIN                                                
+ ADDING UFD  M1416 PITTS                                                
+ ADDING UFD  M1416 GUEST                                                
+ ATTACHING TO  M1416 CMFL02                                             
+ COPY TO IMAGE FILE INIT8A TSSDC.                                       
+ COPY TO IMAGE FILE LOGN8A TSSDC.                                       
+ COPY TO IMAGE FILE LOGT8A TSSDC.                                       
+ COPY TO IMAGE FILE    MAD TSSDC.                                       
+ COPY TO IMAGE FILE   LOAD TSSDC.                                       
+ COPY TO TEXT FILE PRTYGP TIMACC                                        
+ COPY TO TEXT FILE TSSFIL TIMACC                                        
+ COPY TO TEXT FILE GRPUNI TIMACC                                        
+ COPY TO TEXT FILE TIMUSD TIMACC                                        
+ COPY TO TEXT FILE UACCNT TIMACC                                        
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ATTACHING TO  M1416 CMFL02                                             
+ COPY TO IMAGE FILE ADMN8A TSSDC.                                       
+ COPY TO IMAGE FILE APENDA TSSDC.                                       
+ COPY TO IMAGE FILE ARCHIV TSSDC.                                       
+ COPY TO IMAGE FILE COMBIN TSSDC.                                       
+ COPY TO IMAGE FILE COMFIL TSSDC.                                       
+ COPY TO IMAGE FILE DELFIB TSSDC.                                       
+ COPY TO IMAGE FILE DIAL8A TSSDC.                                       
+ COPY TO IMAGE FILE    EDC TSSDC.                                       
+ COPY TO IMAGE FILE    EDL TSSDC.                                       
+ COPY TO IMAGE FILE EXTBSS TSSDC.                                       
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ATTACHING TO  M1416 CMFL02                                             
+ COPY TO IMAGE FILE    FIB TSSDC.                                       
+ COPY TO IMAGE FILE FIBMON TSSDC.                                       
+ COPY TO IMAGE FILE HELO8A TSSDC.                                       
+ COPY TO IMAGE FILE    FAP TSSDC.                                       
+ COPY TO IMAGE FILE  LDABS TSSDC.                                       
+ COPY TO IMAGE FILE   LINK TSSDC.                                       
+ COPY TO IMAGE FILE  LISTF TSSDC.                                       
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ATTACHING TO  M1416 CMFL02                                             
+ COPY TO IMAGE FILE MADTRN TSSDC.                                       
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ATTACHING TO  M1416 CMFL02                                             
+ COPY TO IMAGE FILE   MAIL TSSDC.                                       
+ COPY TO IMAGE FILE  MOUNT TSSDC.                                       
+ COPY TO IMAGE FILE   MOVE TSSDC.                                       
+ COPY TO IMAGE FILE OPTION TSSDC.                                       
+ COPY TO IMAGE FILE      P TSSDC.                                       
+ COPY TO IMAGE FILE PERMIT TSSDC.                                       
+ COPY TO IMAGE FILE  PRBIN TSSDC.                                       
+ COPY TO IMAGE FILE  PRBSS TSSDC.                                       
+ COPY TO IMAGE FILE  PRFIB TSSDC.                                       
+ COPY TO IMAGE FILE  PRINT TSSDC.                                       
+ COPY TO IMAGE FILE PRNTER TSSDC.                                       
+ COPY TO IMAGE FILE    QED TSSDC.                                       
+ COPY TO IMAGE FILE REVOKE TSSDC.                                       
+ COPY TO IMAGE FILE RQUEST TSSDC.                                       
+ COPY TO IMAGE FILE RUNCOM TSSDC.                                       
+ COPY TO IMAGE FILE RUNOFF TSSDC.                                       
+ COPY TO IMAGE FILE  SDUMP TSSDC.                                       
+ COPY TO IMAGE FILE SQUASH TSSDC.                                       
+ COPY TO IMAGE FILE TAPFIL TSSDC.                                       
+ COPY TO IMAGE FILE TTPEEK TSSDC.                                       
+ COPY TO IMAGE FILE TYPSET TSSDC.                                       
+ COPY TO IMAGE FILE UNLINK TSSDC.                                       
+ COPY TO IMAGE FILE UPDATE TSSDC.                                       
+ COPY TO IMAGE FILE UPDBSS TSSDC.                                       
+ COPY TO IMAGE FILE VERIFY TSSDC.                                       
+ COPY TO IMAGE FILE    WHO TSSDC.                                       
+ COPY TO IMAGE FILE  WRITE TSSDC.                                       
+ COPY TO IMAGE FILE  XPAND TSSDC.                                       
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ATTACHING TO  M1416 CMFL02                                             
+ COPY TO IMAGE FILE   LISP TSSDC.                                       
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ATTACHING TO  M1416 CMFL02                                             
+ ADDING LINK  APEND TSSDC. TO  M1416 CMFL02 APENDA TSSDC.               
+ ADDING LINK LOADGO TSSDC. TO  M1416 CMFL02   LOAD TSSDC.               
+ ADDING LINK NCLOAD TSSDC. TO  M1416 CMFL02   LOAD TSSDC.               
+ ADDING LINK    USE TSSDC. TO  M1416 CMFL02   LOAD TSSDC.               
+ ADDING LINK  VLOAD TSSDC. TO  M1416 CMFL02   LOAD TSSDC.               
+ ADDING LINK   APND TSSDC. TO  M1416 CMFL02   MOVE TSSDC.               
+ ADDING LINK   COPY TSSDC. TO  M1416 CMFL02 UPDATE TSSDC.               
+ ADDING LINK CHMODE TSSDC. TO  M1416 CMFL02 UNLINK TSSDC.               
+ ADDING LINK DELETE TSSDC. TO  M1416 CMFL02 UNLINK TSSDC.               
+ ADDING LINK RENAME TSSDC. TO  M1416 CMFL02 UNLINK TSSDC.               
+ ADDING LINK UMOUNT TSSDC. TO  M1416 CMFL02  MOUNT TSSDC.               
+ ADDING LINK  LABEL TSSDC. TO  M1416 CMFL02 VERIFY TSSDC.               
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ATTACHING TO  M1416 CMFL04                                             
+ COPY TO TEXT FILE COM800  SYMTB                                        
+ COPY TO TEXT FILE COMS00  SYMTB                                        
+ COPY TO TEXT FILE MESSAG  TODAY                                        
+ COPY TO BSS FILE  PLIBE    BSS                                         
+ COPY TO BSS FILE TSLIB1    BSS                                         
+ COPY TO BSS FILE TSLIB2    BSS                                         
+ COPY TO BSS FILE  XLIBE    BSS                                         
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ATTACHING TO  C0056 DAEMON                                             
+ ADDING QUOTA TO  C0056 DAEMON DRUM 000000 DISK 004000 TAPE 004000      
+ ATTACHING TO  C0056 FIBMON                                             
+ ADDING QUOTA TO  C0056 FIBMON DRUM 000000 DISK 004000 TAPE 004000      
+ ATTACHING TO  M1416 ADMIN                                              
+ ADDING QUOTA TO  M1416 ADMIN  DRUM 000000 DISK 004000 TAPE 004000      
+ ATTACHING TO  M1416 PITTS                                              
+ ADDING QUOTA TO  M1416 PITTS  DRUM 000000 DISK 004000 TAPE 004000      
+ ATTACHING TO  M1416 GUEST                                              
+ ADDING QUOTA TO  M1416 GUEST  DRUM 000000 DISK 004000 TAPE 000000      
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ATTACHING TO  C0056 FIBMON                                             
+ COPY TO TEXT FILE FIBJOB   FILE                                        
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ATTACHING TO  M1416 ADMIN                                              
+ ADDING LINK UACCNT TIMACC TO  M1416 CMFL02 UACCNT TIMACC               
+ COPY TO IMAGE FILE SUMARY  SAVED                                       
+ COPY TO IMAGE FILE UASCAN  SAVED                                       
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ATTACHING TO  M1416 CMFL01                                             
+ COPY TO BSS FILE ADPI8A    BSS                                         
+ COPY TO BSS FILE AP758A    BSS                                         
+ COPY TO BSS FILE BKSV8C    BSS                                         
+ COPY TO BSS FILE BRKP8D    BSS                                         
+ COPY TO BSS FILE BUCM2E    BSS                                         
+ COPY TO BSS FILE CHNE8A    BSS                                         
+ COPY TO BSS FILE CLOC8H    BSS                                         
+ COPY TO BSS FILE COMC8G    BSS                                         
+ COPY TO BSS FILE CONV8A    BSS                                         
+ COPY TO BSS FILE CPYC8B    BSS                                         
+ COPY TO BSS FILE CTRL8F    BSS                                         
+ COPY TO BSS FILE DDAP4C    BSS                                         
+ COPY TO BSS FILE DDST2I    BSS                                         
+ COPY TO BSS FILE DUMP8B    BSS                                         
+ COPY TO BSS FILE EDBG8A    BSS                                         
+ COPY TO BSS FILE FCOR2O    BSS                                         
+ COPY TO BSS FILE FINT8B    BSS                                         
+ COPY TO BSS FILE HIGH8A    BSS                                         
+ COPY TO BSS FILE IBUF8B    BSS                                         
+ COPY TO BSS FILE IOCM2E    BSS                                         
+ COPY TO BSS FILE MAIN8C    BSS                                         
+ COPY TO TEXT FILE MIT8C0 CTSSLD                                        
+ COPY TO BSS FILE ONLN8F    BSS                                         
+ COPY TO BSS FILE PDPA8B    BSS                                         
+ COPY TO BSS FILE PMTI8A    BSS                                         
+ COPY TO BSS FILE PUSH2A    BSS                                         
+ COPY TO BSS FILE QMAN2B    BSS                                         
+ COPY TO BSS FILE RTRN8E    BSS                                         
+ COPY TO BSS FILE SAVC8C    BSS                                         
+ COPY TO BSS FILE SAVR8B    BSS                                         
+ COPY TO BSS FILE SCDA8C    BSS                                         
+ COPY TO BSS FILE SCDB8A    BSS                                         
+ COPY TO BSS FILE SCDC8C    BSS                                         
+ COPY TO BSS FILE SCDD8A    BSS                                         
+ COPY TO BSS FILE SCND4A    BSS                                         
+ COPY TO BSS FILE SEAR2B    BSS                                         
+ COPY TO BSS FILE SRCH2A    BSS                                         
+ COPY TO BSS FILE STIK2E    BSS                                         
+ COPY TO BSS FILE TCOR8B    BSS                                         
+ COPY TO BSS FILE TMAN4A    BSS                                         
+ COPY TO BSS FILE TPAP2H    BSS                                         
+ COPY TO BSS FILE TPSM2Q    BSS                                         
+ COPY TO BSS FILE TRAC2A    BSS                                         
+ COPY TO BSS FILE TSTO8B    BSS                                         
+ COPY TO BSS FILE ULIB8H    BSS                                         
+ COPY TO BSS FILE ULOD8A    BSS                                         
+ COPY TO BSS FILE UNIT8B    BSS                                         
+ COPY TO BSS FILE UTIL8C    BSS                                         
+ COPY TO BSS FILE UTRP8A    BSS                                         
+ COPY TO BSS FILE WRFL8B    BSS                                         
+ COPY TO BSS FILE WRHI8A    BSS                                         
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ATTACHING TO  M1416 GUEST                                              
+ COPY TO TEXT FILE BOTTLE    MAD                                        
+ COPY TO TEXT FILE   CQA1    MAD                                        
+ COPY TO TEXT FILE  HELLO    MAD                                        
+ COPY TO TEXT FILE PRIMES MADTRN                                        
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              
+IBM 7094-CTSS Simulator 2.4.1
+
+
+ ATTACHING TO  M1416 GUEST                                              
+ COPY TO TEXT FILE   FACT   LISP                                        
+ COPY TO TEXT FILE  FFACT   LISP                                        
+ COPY TO TEXT FILE PROCAL   LISP                                        
+ COPY TO TEXT FILE DEFINE   LISP                                        
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.                              

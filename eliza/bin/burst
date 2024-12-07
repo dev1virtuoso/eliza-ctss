@@ -1,0 +1,58 @@
+#!/usr/bin/python
+
+"""
+Burst a transcription of a CTSS printout into a set of files. This
+will overwrite any existing files.
+
+usage: burst.py < transcription
+
+"""
+
+import re
+import sys
+
+
+def is_empty(line):
+    """Return true if linw is empty."""
+    return not line.strip()
+
+
+def check_new_file(line):
+    """Return a re match object if this line looks like a filename."""
+    return re.search(r'^\s+(\w{1,6})\s{1,5}(MAD|FAP)\s+\d*$', line)
+
+
+def new_file_name(mat):
+    """Form a file name from a pattern from check_new_file."""
+    name1 = mat.group(1).lower()
+    name2 = mat.group(2).lower()
+    return name1 + '.' + name2
+
+
+def close_if_open(the_file):
+    """Close file, or skip if it is not a file obejct."""
+    if the_file:
+        the_file.close()
+
+
+def main():
+    """Main entry point from command line"""
+    out_file = None
+    for line in sys.stdin:
+        if is_empty(line):
+            continue
+        mat = check_new_file(line)
+        if mat:
+            close_if_open(out_file)
+            file_name = new_file_name(mat)
+            print(file_name)
+            out_file = open(file_name, 'w', encoding="utf-8")
+        elif not out_file:
+            raise RuntimeError("Content line not inside a file")
+        else:
+            out_file.write(line)
+    close_if_open(out_file)
+
+
+if __name__ == '__main__':
+    main()

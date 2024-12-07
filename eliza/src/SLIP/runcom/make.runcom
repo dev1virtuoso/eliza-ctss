@@ -1,0 +1,91 @@
+$ ==== Removing old files
+$ Ignore any messages like NO FILES WITH SECOND NAME
+DELETE * BCD
+DELETE * BSS
+$ ==== Compiling SLIP FAP
+$ Ignore any TD warning lines printed
+$ Compiling ADV
+FAP adv (LIST)
+$ Compiling HASH
+FAP hash (LIST)
+$ Compiling INIT
+FAP init (LIST)
+$ Compiling LSTMT
+FAP lstmt (LIST)
+$ Compiling MANY
+FAP many (LIST)
+$ Compiling MEMST
+FAP memst (LIST)
+$ Compiling PRINIT
+FAP prinit (LIST)
+$ Compiling PUTGET
+FAP putget (LIST)
+$ Compiling SQIN
+FAP sqin (LIST)
+$ ==== Compiling SLIP core
+$ Compiling ADAS
+MAD adas (LIST)
+$ Compiling EQUAL
+MAD equal (LIST)
+$ Compiling ERARDR
+MAD erardr (LIST)
+$ Compiling IRALST
+MAD iralst (LIST)
+$ Compiling ITSVAL
+MAD itsval (LIST)
+$ Compiling LCNTR
+MAD lcntr (LIST)
+$ Compiling LIST
+MAD list (LIST)
+$ Compiling LISTMT
+MAD listmt (LIST)
+$ Compiling LISTRD
+MAD listrd (LIST)
+$ Compiling MADATR
+MAD madatr (LIST)
+$ Compiling MADIN
+MAD madin (LIST)
+$ Compiling MAKEDL
+MAD makedl (LIST)
+$ Compiling NAMTST
+MAD namtst (LIST)
+$ Compiling NEWTOP
+MAD newtop (LIST)
+$ Compiling NEWVAL
+MAD newval (LIST)
+$ Compiling NOATVL
+MAD noatvl (LIST)
+$ Compiling POPPER
+MAD popper (LIST)
+$ Compiling PUT
+MAD put (LIST)
+$ Compiling READER
+MAD reader (LIST)
+$ Compiling REMOVE
+MAD remove (LIST)
+$ Compiling RVECT
+MAD rvect (LIST)
+$ Compiling SEQRDR
+MAD seqrdr (LIST)
+$ Compiling SUBST
+MAD subst (LIST)
+$ Compiling TOP
+MAD top (LIST)
+$ Compiling XMINO
+MAD xmino (LIST)
+$ Compiling LETTER
+MAD letter (LIST)
+$ ==== Compiling SLIP tests
+$ Compiling TESTLT
+MAD testlt (LIST)
+$ ==== Combining the library
+* NB: excluding PUT LISTRD for now due to common area issue
+COMBIN * SLIP BSS      rvect adas iralst listmt lcntr list
+COMBIN * SLIP BSS SLIP namtst seqrdr top newtop remove popper
+COMBIN * SLIP BSS SLIP makedl reader erardr madin equal madatr
+COMBIN * SLIP BSS SLIP newval subst itsval noatvl xmino
+COMBIN * SLIP BSS SLIP adv hash init lstmt many memst prinit
+COMBIN * SLIP BSS SLIP putget sqin letter
+$ ==== Running tests
+$ This should print TESTING LETTER only if all OK
+LOADGO testlt slip

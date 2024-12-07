@@ -1,0 +1,50 @@
+#!/usr/bin/python
+
+"""
+Take a MAD text file as stdin and write a properly formatted
+line-numbered card file to stdout
+"""
+
+import sys
+
+def is_continuation(body):
+    """Does the start of this line body indicate this is a continuation line?"""
+    return body[0].isdigit()
+
+
+def is_comment(body):
+    """Does the start of this line body indicate a comment?"""
+    return body[0] == 'R' and (body[1] == '*' or body[1] == ' ')
+
+
+def generate_card_mad(line):
+    """Make a properly formatted card from a line of MAD printout
+    text."""
+    label = line[0:10]
+    control = line[11]
+    body = line[12:79]
+    card_id = line[80:]
+    # Find comment (R) and line continuations (1-9) that
+    # have been indented and return them to the control column
+    body_start = body.lstrip()[0:2]
+    if control == ' ' and (is_continuation(body_start) or
+                           is_comment(body_start)):
+        control = body_start[0]
+        location = body.find(body_start[0])
+        body = body[0:location] + ' ' + body[location+1:]
+    # Reduce indentation on bodies that are too long
+    if len(body.rstrip()) > 61:
+        diff = len(body.rstrip()) - 61
+        body = body[diff:] + (" " * diff)
+    return f'{label}{control}{body}{card_id}'
+
+
+def main():
+    """Main entry point from command line"""
+    for line in sys.stdin:
+        card = generate_card_mad(line.rstrip())
+        print(card)
+
+
+if __name__ == '__main__':
+    main()

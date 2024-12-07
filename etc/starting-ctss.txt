@@ -1,0 +1,34 @@
+$ source env.sh
+CTSS environment set. DASD=dasd PORT=7094
+$ runctss
+IBM 7094-CTSS Simulator 2.4.1
+
+MIT8C0--THE DATE AND TIME ARE 1206141718.9                              
+
+ C0056 99995 LOGGED IN  12/06/14 1718.9 FROM (FIB)    USERS= 01         
+
+==============================================================
+Keep this running and switch to another terminal (no need to
+source env.sh on there)
+==============================================================
+
+$ telnet 127.0.0.1 7094
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+s709 2.4.1 COMM tty0 (KSR-37) from 127.0.0.1
+
+MIT8C0: 1 USER AT 12/06/14 1720.1, MAX = 30
+READY.                                     
+      
+login eliza
+W 1720.2
+Password
+ M1416    10 LOGGED IN  12/06/14 1720.2 FROM 700000
+ HOME FILE DIRECTORY IS M1416 ELIZA                
+                                   
+THIS IS A RECONSTRUCTED CTSS SYSTEM.
+IT IS A DEBUG AND NOT FULLY FUNCTIONAL VERSION.
+                                               
+ CTSS BEING USED IS: MIT8C0
+R .016+.000                

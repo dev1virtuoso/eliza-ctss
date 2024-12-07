@@ -1,0 +1,56 @@
+$ source env.sh
+CTSS environment set. DASD=dasd PORT=7094
+$ add-eliza-users
+Added ELIZA and SLIP users
+$ upload-all
+Uploading SLIP-fap
+    SLIP   ADV    FAP   
+    SLIP   HASH   FAP   
+    SLIP   INIT   FAP   
+    SLIP   LSTMT  FAP   
+    SLIP   MANY   FAP   
+    SLIP   MEMST  FAP   
+    SLIP   PRINIT FAP   
+    SLIP   PUTGET FAP   
+    SLIP   SQIN   FAP   
+Uploading SLIP-core
+    SLIP   ADAS   MAD   
+    SLIP   EQUAL  MAD   
+    SLIP   ERARDR MAD   
+    SLIP   IRALST MAD   
+    SLIP   ITSVAL MAD   
+    SLIP   LCNTR  MAD   
+    SLIP   LIST   MAD   
+    SLIP   LISTMT MAD   
+    SLIP   LISTRD MAD   
+    SLIP   MADATR MAD   
+    SLIP   MADIN  MAD   
+    SLIP   MAKEDL MAD   
+    SLIP   NAMTST MAD   
+    SLIP   NEWTOP MAD   
+    SLIP   NEWVAL MAD   
+    SLIP   NOATVL MAD   
+    SLIP   POPPER MAD   
+    SLIP   PUT    MAD   
+    SLIP   READER MAD   
+    SLIP   REMOVE MAD   
+    SLIP   RVECT  MAD   
+    SLIP   SEQRDR MAD   
+    SLIP   SUBST  MAD   
+    SLIP   TOP    MAD   
+    SLIP   XMINO  MAD   
+Uploading SLIP-reconstructed
+    SLIP   LETTER MAD   
+Uploading SLIP-tests
+    SLIP   TESTLT MAD   
+Uploading SLIP runcoms
+    SLIP   MAKE   RUNCOM
+Uploading ELIZA source
+    ELIZA  CHANGE MAD   
+    ELIZA  DOCBCD MAD   
+    ELIZA  ELIZA  MAD   
+    ELIZA  LPRINT MAD   
+    ELIZA  TESTS  MAD   
+    ELIZA  TPRINT MAD   
+Uploading ELIZA runcoms
+    ELIZA  MAKE   RUNCOM

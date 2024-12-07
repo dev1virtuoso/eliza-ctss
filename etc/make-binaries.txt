@@ -1,0 +1,90 @@
+$ source env.sh
+CTSS environment set. DASD=dasd PORT=7094
+$ make-binaries
+Making Linux on a x86_64
+make[1]: Entering directory
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o arith.o arith.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o binloader.o binloader.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o chan7607.o chan7607.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o chan7909.o chan7909.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o console.o console.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o io.o io.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o lights.o lights.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o negop.o negop.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o parity.o parity.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o posop.o posop.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o s709.o s709.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o screen.o screen.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o sense.o sense.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o commdev.o commdev.c
+gcc -o s709 arith.o binloader.o chan7607.o chan7909.o console.o io.o lights.o negop.o parity.o posop.o s709.o screen.o sense.o commdev.o  -lpthread
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o bcd2txt.o bcd2txt.c
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o prsf2.o prsf2.c
+gcc -o bcd2txt bcd2txt.o prsf2.o
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o bcd2bin.o bcd2bin.c
+gcc -o bcd2bin bcd2bin.o prsf2.o
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o bcd2cbn.o bcd2cbn.c
+gcc -o bcd2cbn bcd2cbn.o prsf2.o
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o bin2bcd.o bin2bcd.c
+gcc -o bin2bcd bin2bcd.o prsf2.o
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o bin2txt.o bin2txt.c
+gcc -o bin2txt bin2txt.o prsf2.o
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o cbn2bcd.o cbn2bcd.c
+gcc -o cbn2bcd cbn2bcd.o prsf2.o
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o crd2cbn.o crd2cbn.c
+gcc -o crd2cbn crd2cbn.o prsf2.o
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o txt2bcd.o txt2bcd.c
+gcc -o txt2bcd txt2bcd.o prsf2.o
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o txt2bin.o txt2bin.c
+gcc -o txt2bin txt2bin.o prsf2.o
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o gendate.o gendate.c
+gcc -o gendate gendate.o
+gcc -DUSE64 -DUNIX -DLINUX -DANSICRT -Iinclude    -c -o genext.o genext.c
+gcc -o genext genext.o
+make[1]: Leaving directory
+Making Linux on a x86_64
+make[1]: Entering directory
+gcc -DLINUX    -c -o obj2bin.o obj2bin.c
+gcc -o obj2bin obj2bin.o 
+gcc -DLINUX    -c -o obj2img.o obj2img.c
+gcc -o obj2img obj2img.o 
+gcc -DLINUX    -c -o bd.o bd.c
+gcc -o bd bd.o  
+gcc -DLINUX    -c -o bsplit.o bsplit.c
+gcc -o bsplit bsplit.o  
+gcc -DLINUX    -c -o bincmp.o bincmp.c
+gcc -o bincmp bincmp.o  
+gcc -DLINUX    -c -o disasm.o disasm.c
+gcc -o disasm disasm.o  
+gcc -DLINUX    -c -o gelbl2txt.o gelbl2txt.c
+gcc -o gelbl2txt gelbl2txt.o  
+gcc -DLINUX    -c -o mkdasd.o mkdasd.c
+gcc -o mkdasd mkdasd.o  
+gcc -DLINUX    -c -o gendate.o gendate.c
+gcc -o gendate gendate.o 
+gcc -DLINUX    -c -o txt2bcd.o txt2bcd.c
+gcc -DLINUX    -c -o prsf2.o prsf2.c
+gcc -o txt2bcd txt2bcd.o prsf2.o 
+gcc -DLINUX    -c -o bcd2txt.o bcd2txt.c
+gcc -o bcd2txt bcd2txt.o prsf2.o 
+gcc -DLINUX    -c -o patchdasd.o patchdasd.c
+gcc -o patchdasd patchdasd.o  
+gcc -DLINUX    -c -o bss2obj.o bss2obj.c
+gcc -o bss2obj bss2obj.o prsf2.o 
+gcc -DLINUX    -c -o stripbss.o stripbss.c
+gcc -o stripbss stripbss.o 
+gcc -DLINUX    -c -o punchctss.o punchctss.c
+gcc -o punchctss punchctss.o 
+gcc -DLINUX    -c -o plotcvt.o plotcvt.c
+gcc -DLINUX    -c -o calcomp.o calcomp.c
+gcc -o plotcvt plotcvt.o calcomp.o  -lm
+gcc -DLINUX    -c -o genext.o genext.c
+gcc -o genext genext.o 
+gcc -DLINUX    -c -o useraddctss.o useraddctss.c
+gcc -DLINUX    -c -o usersupport.o usersupport.c
+gcc -o useraddctss useraddctss.o usersupport.o 
+gcc -DLINUX    -c -o userdelctss.o userdelctss.c
+gcc -o userdelctss userdelctss.o usersupport.o 
+gcc -DLINUX    -c -o userreportctss.o userreportctss.c
+gcc -o userreportctss userreportctss.o usersupport.o 
+make[1]: Leaving directory
