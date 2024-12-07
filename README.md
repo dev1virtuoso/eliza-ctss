@@ -10,7 +10,7 @@ It comprises:
   code](https://sites.google.com/view/elizagen-org/original-eliza),
   found among Weizenbaum's papers at MIT by Jeff Shrager and the MIT
   archivists, and
-  [transcribed](https://github.com/jeffshrager/elizagen.org/1965_Weizenbaum_MAD-SLIP)
+  [transcribed](https://github.com/jeffshrager/elizagen.org/tree/master/1965_Weizenbaum_MAD-SLIP)
   by Anthony Hay and Arthur Schwarz respectively.
 * The s709 [emulator](https://cozx.com/dpitts/ibm7090.html) for the
   IBM 7094 by David Pitts and Paul Pierce, along with reconstructed
@@ -43,9 +43,9 @@ $ make-binaries
 ```
 
 This will unpack and make the s709 and utility binaries found under
-[](ctss/dist) and copy the completed items to [](ctss/bin).
+[`ctss/dist`](ctss/dist) and copy the completed items to [`ctss/bin`](ctss/bin).
 
-See [](etc/make-binaries.txt) for a transcript of how this looks, but
+See [here](etc/make-binaries.txt) for a transcript of how this looks, but
 it may be slightly different on your computer.
 
 ## CTSS setup
@@ -65,7 +65,7 @@ and Enter to finish. This represents the emulated machine stopping for
 operator input - in our virtual environment there is nothing to do
 apart from pressing Enter to resume.
 
-See [](etc/ctss-setup.txt) for a transcript of how this looks.
+See [here](etc/ctss-setup.txt) for a transcript of how this looks.
 
 After this is done, you will have a base line CTSS environment
 installed on the disks and drum files in the `dasd` directory.
@@ -87,7 +87,7 @@ between files from both collections, and this allows us to select
 which ones to use at run time. Both accounts are under the system
 problem number `M1416` for simplicity of use.
 
-See [](etc/install-eliza.txt) for a transcript of how this looks.
+See [here](etc/install-eliza.txt) for a transcript of how this looks.
 
 ## Starting CTSS
 
@@ -112,7 +112,7 @@ READY.
 Type `login eliza` and give the password, which is `eliza`. You could
 also `login slip` with password `slip`.
 
-See [](etc/starting-ctss.txt) for a transcript of how this looks.
+See [here](etc/starting-ctss.txt) for a transcript of how this looks.
 
 ## Using CTSS
 
@@ -190,7 +190,7 @@ has a great deal more information on using CTSS. Start with section AA
 The [ctss-kit README](ctss/ctss-kit-readme.txt) provides more details
 on how the emulator works with CTSS.
 
-See [](etc/running-ctss.txt) for a transcript of how this looks.
+See [here](etc/running-ctss.txt) for a transcript of how this looks.
 
 ## Shutting down CTSS
 
@@ -206,6 +206,7 @@ each non Control-C line.
 * Type `st`
 * Press Control-C
 * Type `ek 40032`
+* Type `st`
 * Type `q` and Enter to exit.
 
 What is going on here? On the real IBM 7094 the operator would
@@ -213,7 +214,7 @@ initiate shutdown by pressing the stop button (Control-C on the
 emulator) then toggling in a value on the front panel (`ek` in the
 emulator) and then resuming (`st`).
 
-See [](etc/shuttding-down-ctss.txt) for a transcript of how this looks.
+See [here](etc/shuttding-down-ctss.txt) for a transcript of how this looks.
 
 ## Dealing with disk errors
 
@@ -232,7 +233,8 @@ When the output says `QUIT`, type `q`.
 ## Compiling all the source
 
 We use a `runcom` file, which is a type of batch script. Ensure CTSS
-is booted and login as user `SLIP`. Then type
+is booted and login as user `SLIP`. The file we will use is in
+`MAKE RUNCOM`. To execute it:
 
 ```
 RUNCOM MAKE
@@ -248,10 +250,10 @@ compile all the ELIZA MAD source code.
 
 > TBD: when the remaining source is ready, link with library and run
 
-See [](etc/compiling.txt) for a transcript of how this looks.
+See [here](etc/compiling.txt) for a transcript of how this looks.
 
 
-## Changing the source
+## Changing the source code
 
 You can make changes online using the `EDC` editor, but for anything
 other than temporary experiments I recommend editing on your host
@@ -260,8 +262,8 @@ files from CTSS, but I would recommend this only for listing files,
 not source files, as whitespace and sequence numbers may change which
 will play havoc with source control. I describe each method below.
 
-ELIZA source is in [](src/eliza/ELIZA) and SLIP source is in
-[](src/eliza/SLIP). 
+ELIZA source is in [`src/eliza/ELIZA`](src/eliza/ELIZA) and SLIP source is in
+[`src/eliza/SLIP`](src/eliza/SLIP).
 
 Very important - upload and download can only take place when CTSS is
 shut down. You will soon be able to do the shutdown sequence from
