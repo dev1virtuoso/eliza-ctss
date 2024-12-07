@@ -214,7 +214,7 @@ initiate shutdown by pressing the stop button (Control-C on the
 emulator) then toggling in a value on the front panel (`ek` in the
 emulator) and then resuming (`st`).
 
-See [here](etc/shuttding-down-ctss.txt) for a transcript of how this looks.
+See [here](etc/shutting-down-ctss.txt) for a transcript of how this looks.
 
 ## Dealing with disk errors
 
@@ -262,8 +262,8 @@ files from CTSS, but I would recommend this only for listing files,
 not source files, as whitespace and sequence numbers may change which
 will play havoc with source control. I describe each method below.
 
-ELIZA source is in [`src/eliza/ELIZA`](src/eliza/ELIZA) and SLIP source is in
-[`src/eliza/SLIP`](src/eliza/SLIP).
+ELIZA source is in [`eliza/src/ELIZA`](eliza/src/ELIZA) and SLIP source is in
+[`eliza/src/SLIP`](eliza/src/SLIP).
 
 Very important - upload and download can only take place when CTSS is
 shut down. You will soon be able to do the shutdown sequence from
