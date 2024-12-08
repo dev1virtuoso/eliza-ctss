@@ -76,6 +76,8 @@ MAD xmino (LIST)
 $ Compiling LETTER
 MAD letter (LIST)
 $ ==== Compiling SLIP tests
+$ Compiling TESTBA
+MAD testba (LIST)
 $ Compiling TESTLT
 MAD testlt (LIST)
 $ ==== Combining the library
@@ -87,5 +89,7 @@ COMBIN * SLIP BSS SLIP newval subst itsval noatvl xmino
 COMBIN * SLIP BSS SLIP adv hash init lstmt many memst prinit
 COMBIN * SLIP BSS SLIP putget sqin letter
 $ ==== Running tests
+$ This should print TESTING BASIC LISTS only if all OK
+LOADGO testba slip
 $ This should print TESTING LETTER only if all OK
 LOADGO testlt slip

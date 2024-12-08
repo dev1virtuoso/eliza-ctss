@@ -365,6 +365,9 @@ We can use this facility with the emulator as well.
   completed at run time).
 * If you get an error `s709: commopen: bind failed: Address already in
   use` when restarting CTSS, wait a few seconds and try again.
+* If you get an error `NEW FILE NAME IS (COMBI NFILE)` when running
+  `RUNCOM MAKE` on SLIP, just run the command again. The cause of
+  this is not known yet.
 
 ## Questions, bugs etc
 
