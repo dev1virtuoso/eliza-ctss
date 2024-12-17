@@ -13,3 +13,5 @@ for file in eliza/src/ELIZA/*.runcom
 do
     upload ELIZA $file
 done
+
+cleanupctss

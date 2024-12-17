@@ -73,23 +73,107 @@ $ Compiling TOP
 MAD top (LIST)
 $ Compiling XMINO
 MAD xmino (LIST)
+$ ==== Compiling SLIP eliza
+$ Compiling PLACE
+MAD place (LIST)
+$ Compiling FRBCD
+MAD frbcd (LIST)
+$ Compiling LISTP
+MAD listp (LIST)
+$ Compiling RDRREV
+MAD rdrrev (LIST)
+$ Compiling SEQUEN
+MAD sequen (LIST)
+$ Compiling LSTEQL
+MAD lsteql (LIST)
+$ Compiling LSSCPY
+MAD lsscpy (LIST)
+$ Compiling LSPNTR
+MAD lspntr (LIST)
+$ Compiling SPLIT
+MAD split (LIST)
+$ Compiling LNKBOT
+MAD lnkbot (LIST)
+$ Compiling NODLST
+MAD nodlst (LIST)
+$ Compiling CONLST
+MAD conlst (LIST)
+$ Compiling PARTN
+MAD partn (LIST)
+$ Compiling XMATCH
+MAD xmatch (LIST)
+$ Compiling YMATCH
+MAD ymatch (LIST)
+$ Compiling ASSMBL
+MAD assmbl (LIST)
+$ Compiling DAS
+MAD das (LIST)
+$ Compiling CNTSPC
+MAD cntspc (LIST)
+$ Compiling GOODY
+$ Ignore below warnings for unused labels RDB, TST
+MAD goody (LIST)
+$ Compiling xlook
+MAD xlook (LIST)
+$ Compiling TXTPRT
+MAD txtprt (LIST)
+$ Compiling SUBTOP
+MAD subtop (LIST)
+$ Compiling LPNTR
+MAD lpntr (LIST)
+$ ==== Compiling SLIP reconstructed
 $ Compiling LETTER
 MAD letter (LIST)
+$ Compiling BCDIT
+MAD bcdit (LIST)
+$ Compiling INLSTL
+MAD inlstl (LIST)
 $ ==== Compiling SLIP tests
 $ Compiling TESTBA
 MAD testba (LIST)
 $ Compiling TESTLT
 MAD testlt (LIST)
+$ Compiling TESTBC
+MAD testbc (LIST)
+$ Compiling TESTIL
+MAD testil (LIST)
 $ ==== Combining the library
-* NB: excluding PUT LISTRD for now due to common area issue
-COMBIN * SLIP BSS      rvect adas iralst listmt lcntr list
-COMBIN * SLIP BSS SLIP namtst seqrdr top newtop remove popper
-COMBIN * SLIP BSS SLIP makedl reader erardr madin equal madatr
-COMBIN * SLIP BSS SLIP newval subst itsval noatvl xmino
-COMBIN * SLIP BSS SLIP adv hash init lstmt many memst prinit
-COMBIN * SLIP BSS SLIP putget sqin letter
+* We assemble this in pieces so we are able to do experiments
+* on partial sets of functions. Only SLIP BSS is permanently
+* needed though.
+* FAP
+COMBIN * SLIPF BSS       adv hash init lstmt many memst prinit
+COMBIN * SLIPF BSS SLIPF putget sqin
+* Core
+COMBIN * SLIPC BSS       rvect adas iralst listmt lcntr list
+COMBIN * SLIPC BSS SLIPC namtst seqrdr top newtop remove popper
+COMBIN * SLIPC BSS SLIPC makedl reader erardr madin equal madatr
+COMBIN * SLIPC BSS SLIPC newval subst itsval noatvl xmino
+COMBIN * SLIPC BSS SLIPC put listrd
+* Eliza
+* NB: excluding FRBCD LISTP as we use the version in ELIZA
+COMBIN * SLIPE BSS       place rdrrev sequen lsteql lsscpy lspntr
+COMBIN * SLIPE BSS SLIPE split lnkbot nodlst conlst partn xmatch
+COMBIN * SLIPE BSS SLIPE ymatch assmbl das cntspc goody xlook
+COMBIN * SLIPE BSS SLIPE txtprt subtop lpntr
+* Reconstructed
+COMBIN * SLIPR BSS       letter bcdit inlstl
+* Everything
+COMBIN * SLIP  BSS SLIPF SLIPC SLIPE SLIPR
+* Send the library to common files for pickup by ELIZA
+COMFIL 4
+$ Ignore SLIP BSS NOT FOUND if printed
+DELETE SLIP BSS
+COMFIL 0
+UPDATE 4 SLIP BSS
 $ ==== Running tests
 $ This should print TESTING BASIC LISTS only if all OK
-LOADGO testba slip
+LOADGO testba (libe) slip
 $ This should print TESTING LETTER only if all OK
-LOADGO testlt slip
+LOADGO testlt (libe) slip
+$ This should print TESTING BCDIT only if all OK
+LOADGO testbc (libe) slip
+$ This should print TESTING INLSTL only if all OK
+LOADGO testil (libe) slip
+$ ==== Finished
+$ MAKE HAS BEEN RUN should be printed finally

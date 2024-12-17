@@ -7,14 +7,17 @@ line-numbered card file to stdout
 
 import sys
 
+
 def is_continuation(body):
-    """Does the start of this line body indicate this is a continuation line?"""
+    """Does the start of this line body indicate this is a
+    continuation line?"""
     return body[0].isdigit()
 
 
 def is_comment(body):
     """Does the start of this line body indicate a comment?"""
-    return body[0] == 'R' and (body[1] == '*' or body[1] == ' ')
+    return body[0] == 'R' and (len(body) == 1 or
+                               body[1] == '*' or body[1] == ' ')
 
 
 def generate_card_mad(line):
