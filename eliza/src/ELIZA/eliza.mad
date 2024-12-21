@@ -1,8 +1,15 @@
             NORMAL MODE IS INTEGER                                              000010
+           R CHANGE MADE DEC 2024 TO SATISFY COMMON AREA REQS                   000012
+            PROGRAM COMMON AVSL,W                                               000014
+            DIMENSION W(100)                                                    000016
+           R END OF CHANGE                                                      000012
             DIMENSION KEY(32),MYTRAN(4)                                         000020
             INITAS.(0)                                                          000030
             PRINT COMMENT $WHICH SCRIPT DO YOU WISH TO PLAY$                    000060
             READ FORMAT SNUMB,SCRIPT                                            000070
+           R CHANGE MADE DEC 2024 TO INIT PUBLIC LIST W(1)                      000072
+            LIST.(W(1))                                                         000074
+           R END OF CHANGE                                                      000076
             LIST.(TEST)                                                         000080
             LIST.(INPUT)                                                        000090
             LIST.(OUTPUT)                                                       000100
