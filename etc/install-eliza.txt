@@ -39,18 +39,53 @@ Uploading SLIP-core
     SLIP   SUBST  MAD   
     SLIP   TOP    MAD   
     SLIP   XMINO  MAD   
+Uploading SLIP-eliza
+    SLIP   ASSMBL MAD
+    SLIP   CNTSPC MAD
+    SLIP   CONLST MAD
+    SLIP   DAS    MAD
+    SLIP   FRBCD  MAD
+    SLIP   GOODY  MAD
+    SLIP   LISTP  MAD
+    SLIP   LNKBOT MAD
+    SLIP   LPNTR  MAD
+    SLIP   LSPNTR MAD
+    SLIP   LSSCPY MAD
+    SLIP   LSTEQL MAD
+    SLIP   NODLST MAD
+    SLIP   PARTN  MAD
+    SLIP   PLACE  MAD
+    SLIP   RDRREV MAD
+    SLIP   SEQUEN MAD
+    SLIP   SPLIT  MAD
+    SLIP   SUBTOP MAD
+    SLIP   TXTPRT MAD
+    SLIP   XLOOK  MAD
+    SLIP   XMATCH MAD
+    SLIP   YMATCH MAD
 Uploading SLIP-reconstructed
-    SLIP   LETTER MAD   
+    SLIP   BCDIT  MAD
+    SLIP   INLSTL MAD
+    SLIP   LETTER MAD
 Uploading SLIP-tests
-    SLIP   TESTLT MAD   
+    SLIP   TESTBA MAD
+    SLIP   TESTBC MAD
+    SLIP   TESTIL MAD
+    SLIP   TESTLT MAD
 Uploading SLIP runcoms
     SLIP   MAKE   RUNCOM
+Uploading the huge loader
+    ELIZA  L      FAP
+    ELIZA  MODLOD FAP
 Uploading ELIZA source
-    ELIZA  CHANGE MAD   
-    ELIZA  DOCBCD MAD   
-    ELIZA  ELIZA  MAD   
-    ELIZA  LPRINT MAD   
-    ELIZA  TESTS  MAD   
-    ELIZA  TPRINT MAD   
+    ELIZA  CHANGE MAD
+    ELIZA  DOCBCD MAD
+    ELIZA  ELIZA  MAD
+    ELIZA  LPRINT MAD
+    ELIZA  TESTS  MAD
+    ELIZA  TPRINT MAD
 Uploading ELIZA runcoms
     ELIZA  MAKE   RUNCOM
+Uploading ELIZA scripts
+    ELIZA  .TAPE. 100
+    ELIZA  .TAPE. 200

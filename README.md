@@ -17,8 +17,8 @@ It comprises:
   CTSS operating system code.
 * Build and test scripts by Rupert Lane.
 
-> This is a work in progress - at present we can compile parts of
-> ELIZA and SLIP but do not yet have a working executable.
+> This is a work in progress - at present we can compile and run ELIZA
+> but there may still be some errors lurking.
 
 ## Prerequisites
 
@@ -246,14 +246,46 @@ tests and combine the object files into a library.
 
 Next, login as `ELIZA` and run the same command. (Note this is a
 different file as we are now in the ELIZA directory). This will
-compile all the ELIZA MAD source code.
-
-> TBD: when the remaining source is ready, link with library and run
+compile the CTSS huge linker and all the ELIZA MAD source code. It
+will then load ELIZA and SLIP into memory and save this as an
+executable called `ELIZA SAVED`.
 
 See [here](etc/compiling.txt) for a transcript of how this looks.
 
+## Running ELIZA
+
+Still logged in as `ELIZA`, issue the following command:
+
+```
+R ELIZA
+```
+
+ELIZA will prompt you for a script to use. These define the rules it
+will follow and are stored in files of name `.TAPE. xxx` where `xxx`
+is a three digit number.
+
+We have two examples, `100` for the script found in the printout of
+the ELIZA source code, and `200` which is from the CACM article
+written by Weizenbaum. We suggest using `200`.
+
+ELIZA will then print a welcome message and prompt you for input. Type
+your response, keeping each line below 78 characters, and press Enter
+twice to submit. ELIZA will then reply.
+
+If you enter a blank line, ELIZA will offer to save its rules to a
+file. Press Enter to print them to the console or enter a number to
+create a `.TAPE. xxx` file. Suggest using a new number here to avoid
+overwriting an existing script. After this, ELIZA will quit.
+
+Otherwise, when finished, press Control-\ to interrupt back to the
+CTSS command line.
+
+See [here](etc/running-eliza.txt) for a transcript of how this looks.
 
 ## Changing the source code
+
+This and the below sections are only of interest if you are changing
+the ELIZA or SLIP source code.
 
 You can make changes online using the `EDC` editor, but for anything
 other than temporary experiments I recommend editing on your host
@@ -365,9 +397,6 @@ We can use this facility with the emulator as well.
   completed at run time).
 * If you get an error `s709: commopen: bind failed: Address already in
   use` when restarting CTSS, wait a few seconds and try again.
-* If you get an error `NEW FILE NAME IS (COMBI NFILE)` when running
-  `RUNCOM MAKE` on SLIP, just run the command again. The cause of
-  this is not known yet.
 
 ## Questions, bugs etc
 
