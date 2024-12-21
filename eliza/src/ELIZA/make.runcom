@@ -2,6 +2,14 @@ $ ==== Removing old files
 $ Ignore any messages like NO FILES WITH SECOND NAME
 DELETE * BCD
 DELETE * BSS
+$ ==== Making the huge loader
+* This provides the huge loader L available in CTSS source
+* but whose binary is not present in ctss-kit.
+* See CTSS Programmer's Guide AH.7.01
+$ Ignore all TD/D wwrnings printed
+FAP l
+LOAD l
+SAVE l
 $ ==== Compiling ELIZA
 $ Compiling CHANGE
 MAD change (LIST)
@@ -15,5 +23,16 @@ $ Compiling TESTS
 MAD tests (LIST)
 $ Compiling TPRINT
 MAD tprint (LIST)
+$ ==== Making the ELIZA library
+COMBIN * LELIZA BSS change docbcd lprint tests tprint
 $ ==== Loading ELIZA
-LOAD eliza
+* Using the huge loader 'L' compiled above
+* Using SLIP from common files (the SLIP runcom copied it there)
+* The double library list is due to mutual dependencies between
+* SLIP and the ELIZA code
+R L eliza (LIBE) leliza (SYS) slip (LIBE) leliza (SYS) slip
+SAVE eliza
+$ ==== Finished
+$ Program written to  ELIZA SAVED
+$ Type  R ELIZA  to start it
+$ MAKE HAS BEEN RUN should be printed finally

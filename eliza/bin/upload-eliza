@@ -2,6 +2,12 @@
 
 # Upload all ELIZA files
 
+echo Uploading the huge loader
+for file in eliza/src/huge-loader/*.fap
+do
+    upload ELIZA $file
+done
+
 echo Uploading ELIZA source
 for file in eliza/src/ELIZA/*.mad
 do
