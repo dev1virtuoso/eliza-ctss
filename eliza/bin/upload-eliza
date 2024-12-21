@@ -14,4 +14,10 @@ do
     upload ELIZA $file
 done
 
+echo Uploading ELIZA scripts
+for file in eliza/src/ELIZA/tape.???
+do
+    upload ELIZA $file
+done
+
 cleanupctss
