@@ -174,9 +174,13 @@ Each of these steps is explained in more detail below.
 
 ## Shutting down CTSS
 
-It's important to shut down CTSS cleanly when finished. Switch back to
-the main emulator window and do the following, pressing Enter after
-each non Control-C line.
+It's important to shut down CTSS cleanly when finished to avoid
+corrupting its disks.
+
+You will need to switch back to the *main emulator window* you started
+earlier - this cannot be done from the telnet session.
+
+Execute the following, pressing Enter after each non Control-C line.
 
 * Press Control-C
 * Type `ek 40017`
