@@ -23,8 +23,16 @@ It comprises:
 ## Prerequisites
 
 You will need a Unix like environment that can compile C code and run
-Python and bash scripts. You will also need the `telnet` command line
-program or a GUI telnet client.
+Python and shell scripts. This has been tested on
+
+* Arch Linux
+* Debian
+* MacOS
+
+but may work on other Unix/Linux flavours.
+
+You will also need the `telnet` command line program or a GUI telnet
+client.
 
 ## `env.sh`
 
@@ -94,7 +102,118 @@ problem number `M1416` for simplicity of use.
 
 See [here](etc/install-eliza.txt) for a transcript of how this looks.
 
-## Starting CTSS
+## Get ELIZA compiled and running
+
+Now that the above set up steps are done, I'll show quickly how to
+compile and run ELIZA for the first time.
+
+1. Start CTSS by typing `runctss`
+2. Open another window and ensure you have a telnet client - eg via
+   `sudo apt install telnet` on Debian/Ubuntu or `brew install telnet`
+   on MacOS.
+3. Type `telnet 0 7094`
+4. Type `login slip` and give the password `slip`
+5. The screen should now look something like
+
+```
+$ telnet 0 7094
+Trying 0.0.0.0...
+Connected to 0.
+Escape character is '^]'.
+s709 2.4.1 COMM tty0 (KSR-37) from 127.0.0.1
+
+MIT8C0: 1 USER AT 12/22/14 1326.3, MAX = 30
+READY.
+
+login slip
+W 1326.3
+Password
+ M1416    11 LOGGED IN  12/22/14 1326.3 FROM 700000
+ LAST LOGOUT WAS  12/22/14 1100.6 FROM 700000
+ HOME FILE DIRECTORY IS M1416 SLIP
+
+THIS IS A RECONSTRUCTED CTSS SYSTEM.
+IT IS A DEBUG AND NOT FULLY FUNCTIONAL VERSION.
+
+ CTSS BEING USED IS: MIT8C0
+R .050+.000
+```
+6. Type `runcom make`
+7. A long series of compile messages should follow, ending with it
+   printing `MAKE HAS BEEN RUN `
+8. Type `login eliza` and give the password `eliza`
+9. Type `runcom make` again and wait for the `MAKE HAS BEEN RUN`
+   message.
+10. Type `r eliza`
+11. Give the answer `200` to the prompt of which script to use
+12. ELIZA will print a greeting and you can now interact with her.
+    Keep your responses below 76 characters and press Enter twice to
+    submit. This is how your screen could look after a first response.
+
+```
+r eliza
+W 1331.5
+EXECUTION.
+WHICH SCRIPT DO YOU WISH TO PLAY
+200
+HOW DO YOU DO . PLEASE TELL ME YOUR PROBLEM
+INPUT
+Men are all alike.
+
+IN WHAT WAY
+INPUT
+```
+
+13. When you are finished, press `Control-\ ` (backslash) to interrupt and then
+    type `logout`.
+14. You can telnet in again any time as `eliza` and do `r eliza` to
+    start the program again.
+15. Shut down CTSS cleanly when finished - see the section below.
+
+Each of these steps is explained in more detail below.
+
+## Shutting down CTSS
+
+It's important to shut down CTSS cleanly when finished. Switch back to
+the main emulator window and do the following, pressing Enter after
+each non Control-C line.
+
+* Press Control-C
+* Type `ek 40017`
+* Type `st`
+* Press Control-C
+* Type `ek 0`
+* Type `st`
+* Press Control-C
+* Type `ek 40032`
+* Type `st`
+* Type `q` and Enter to exit.
+
+What is going on here? On the real IBM 7094 the operator would
+initiate shutdown by pressing the stop button (Control-C on the
+emulator) then toggling in a value on the front panel (`ek` in the
+emulator) and then resuming (`st`).
+
+See [here](etc/shutting-down-ctss.txt) for a transcript of how this
+looks.
+
+## Dealing with disk errors
+
+If you forget to do the above, or your machine crashes, or if there
+are any problems starting CTSS again, all is not lost. Run this
+command to do the equivalent of a `fsck` or `chkdsk`.
+
+```
+$ source env.sh
+$ salvagectss
+```
+
+You will need to type `st` a couple of times to start the machine.
+When the output says `QUIT`, type `q`.
+
+The following sections give more detail on how to use CTSS.
+
+## Starting and logging into CTSS
 
 ```
 $ source env.sh
@@ -103,19 +222,18 @@ $ runctss
 
 This will start the emulator and show who is logged in.
 
-Open a telnet client in another window and connect to localhost port
-7094. You will see the below
+In another window, open a telnet client and connect to localhost port
+7094, eg by typing `telnet 0 7094`.
 
-```
-s709 2.4.1 COMM tty0 (KSR-37) from 127.0.0.1
+Type `login` and then the user name `eliza` or `slip`. It will prompt
+for a password which is the same as the user name,
 
-MIT8C0: 1 USER AT 12/05/14  912.1, MAX = 30
-READY.                                     
-      
-```
+Up to 30 users can log in at the same time (via separate telnet
+connections to the emulator) but each account can only be logged in on
+a single session at a time.
 
-Type `login eliza` and give the password, which is `eliza`. You could
-also `login slip` with password `slip`.
+When you logout, the telnet session will close, but you can
+immediately re-establish it if needed.
 
 See [here](etc/starting-ctss.txt) for a transcript of how this looks.
 
@@ -123,9 +241,6 @@ See [here](etc/starting-ctss.txt) for a transcript of how this looks.
 
 Some quick points to get you orientated
 
-* Up to 30 users can log in at the same time (via separate telnet
-  connections to the emulator) but each account can only be logged in
-  on a single session at a time.
 * There is no prompt, but you will know CTSS is ready for input when
   it prints `R` followed by 2 numbers (which represent the CPU time
   and swapping time for the last command run).
@@ -196,44 +311,6 @@ The [ctss-kit README](ctss/ctss-kit-readme.txt) provides more details
 on how the emulator works with CTSS.
 
 See [here](etc/running-ctss.txt) for a transcript of how this looks.
-
-## Shutting down CTSS
-
-It's important to shut down CTSS cleanly when finished. Switch back to
-the main emulator window and do the following, pressing Enter after
-each non Control-C line.
-
-* Press Control-C
-* Type `ek 40017`
-* Type `st`
-* Press Control-C
-* Type `ek 0`
-* Type `st`
-* Press Control-C
-* Type `ek 40032`
-* Type `st`
-* Type `q` and Enter to exit.
-
-What is going on here? On the real IBM 7094 the operator would
-initiate shutdown by pressing the stop button (Control-C on the
-emulator) then toggling in a value on the front panel (`ek` in the
-emulator) and then resuming (`st`).
-
-See [here](etc/shutting-down-ctss.txt) for a transcript of how this looks.
-
-## Dealing with disk errors
-
-If you forget to do the above, or your machine crashes, or if there
-are any problems starting CTSS again, all is not lost. Run this
-command to do the equivalent of a `fsck` or `chkdsk`.
-
-```
-$ source env.sh
-$ salvagectss
-```
-
-You will need to type `st` a couple of times to start the machine.
-When the output says `QUIT`, type `q`.
 
 ## Compiling all the source
 
@@ -390,9 +467,9 @@ We can use this facility with the emulator as well.
 
 ## Development tips
 
-* CTSS has no concept of exit status, so if there is an error in
-  compiling or in the runcom file it will keep going. I've added
-  comments in the runcom file to show what is expected.
+* If you change any files, look through the runcom output to spot any
+  errors when compiling. I've added comments in the runcom file to
+  show what is expected.
 * If a compile fails, it will *not* print `LENGTH xxx`. Look in the
   associated listing file (eg `ELIZA BCD`) for more details.
 * FAP errors are cryptic 1 or 2 letter codes. See the [FAP
