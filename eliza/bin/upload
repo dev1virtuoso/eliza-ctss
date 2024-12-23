@@ -27,7 +27,7 @@ name1="${filename%.*}"
 name2="${filename##*.}"
 
 # Transform eg "tape.101" to ".TAPE. 101"
-if [ $name1 == "tape" ]
+if [ $name1 = "tape" ]
 then
     name1=".tape."
 fi
@@ -36,7 +36,7 @@ acct=`printf %6s%-6s M1416 $user | tr [a-z] [A-Z]`
 
 # MAD files need special handling as the column format in the printout
 # is not quite right.
-if [ $name2 == "mad" ]
+if [ $name2 = "mad" ]
 then   
     mad-text-to-cards < $file > ${TMP}/$name1.crd
 else

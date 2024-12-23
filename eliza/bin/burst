@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 """
 Burst a transcription of a CTSS printout into a set of files. This
