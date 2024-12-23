@@ -2,21 +2,45 @@
 
 # Make the binaries for s709 and utilities, then install in ctss/bin
 
+S709_BINS="s709 bcd2txt bcd2bin bcd2cbn bin2bcd bin2txt cbn2bcd crd2cbn txt2bcd \
+          txt2bin gendate genext"
+UTIL_BINS="obj2bin obj2img bd bsplit bincmp disasm gelbl2txt mkdasd \
+          patchdasd bss2obj stripbss punchctss plotcvt useraddctss \
+          userdelctss userreportctss"
+DEST=../../bin
+
 rm -rf ctss/src/ ctss/bin/
 mkdir -p ctss/src/ ctss/bin/
 cd ctss/src/
-tar xzf ../dist/s709-2.4.1.tar.gz
-cd s709-2.4.1
+tar xzf ../dist/s709-2.4.1_eliza-0.1.tar.gz
+cd s709-2.4.1_eliza-0.1/
 make
-cp s709 bcd2txt bcd2bin bcd2cbn bin2bcd bin2txt cbn2bcd crd2cbn txt2bcd \
-   txt2bin gendate genext ../../bin
+cp ${S709_BINS} ${DEST}
 
 cd ..
 tar xzf ../dist/utils-1.1.14.tar.gz
 cd utils
 make clean
 make
-cp obj2bin obj2img bd bsplit bincmp disasm gelbl2txt mkdasd \
-   patchdasd bss2obj stripbss punchctss plotcvt useraddctss \
-   userdelctss userreportctss ../../bin
-   
+cp ${UTIL_BINS} ${DEST}
+
+echo
+RESULT=0
+for bin in ${S709_BINS} ${UTIL_BINS}
+do
+    if [ ! -f "${DEST}/$bin" ]
+    then
+        echo "*** $bin did not compile successfully"
+        RESULT=1
+    fi
+done
+
+if [ $RESULT -eq 0 ]
+then
+    echo "All binaries compiled successfully"
+else
+    echo "Please fix compile errors or report an issue before continuing"
+fi
+
+exit $RESULT
+

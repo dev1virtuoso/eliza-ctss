@@ -43,14 +43,19 @@ $ make-binaries
 ```
 
 This will unpack and make the s709 and utility binaries found under
-[`ctss/dist`](ctss/dist) and copy the completed items to [`ctss/bin`](ctss/bin).
+[`ctss/dist`](ctss/dist) and copy the completed items to
+[`ctss/bin`](ctss/bin).
+
+If this worked, you will see `All binaries compiled successfully`
+printed at the end.
 
 See [here](etc/make-binaries.txt) for a transcript of how this looks, but
 it may be slightly different on your computer.
 
 ## CTSS setup
 
-Run the following commands.
+After you have created the binaries in the above section, run the
+following commands.
 
 ```
 $ source env.sh

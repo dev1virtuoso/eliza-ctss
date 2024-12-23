@@ -88,3 +88,5 @@ gcc -o userdelctss userdelctss.o usersupport.o
 gcc -DLINUX    -c -o userreportctss.o userreportctss.c
 gcc -o userreportctss userreportctss.o usersupport.o 
 make[1]: Leaving directory
+
+All binaries compiled successfully
