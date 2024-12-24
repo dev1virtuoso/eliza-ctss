@@ -1,5 +1,5 @@
-This is an attempt to compile and run Joseph Weizenbaum's original
-1965 code for
+Using the code here you can compile and run Joseph Weizenbaum's
+original 1965 code for
 [ELIZA](https://sites.google.com/view/elizaarchaeology/home) on
 [CTSS](https://en.wikipedia.org/wiki/Compatible_Time-Sharing_System),
 using an emulated IBM 7094.
@@ -13,12 +13,9 @@ It comprises:
   [transcribed](https://github.com/jeffshrager/elizagen.org/tree/master/1965_Weizenbaum_MAD-SLIP)
   by Anthony Hay and Arthur Schwarz respectively.
 * The s709 [emulator](https://cozx.com/dpitts/ibm7090.html) for the
-  IBM 7094 by David Pitts and Paul Pierce, along with reconstructed
+  IBM 7094 by Dave Pitts and Paul Pierce, along with reconstructed
   CTSS operating system code.
 * Build and test scripts by Rupert Lane.
-
-> This is a work in progress - at present we can compile and run ELIZA
-> but there may still be some errors lurking.
 
 ## Prerequisites
 
@@ -94,11 +91,6 @@ $ upload-all
 
 This will make CTSS users for ELIZA and SLIP, and copy all the source
 code into the virtual disk files.
-
-We use separate users for ELIZA and SLIP as there are some overlaps
-between files from both collections, and this allows us to select
-which ones to use at run time. Both accounts are under the system
-problem number `M1416` for simplicity of use.
 
 See [here](etc/install-eliza.txt) for a transcript of how this looks.
 
@@ -231,6 +223,11 @@ In another window, open a telnet client and connect to localhost port
 
 Type `login` and then the user name `eliza` or `slip`. It will prompt
 for a password which is the same as the user name,
+
+We use separate users for ELIZA and SLIP as there are some overlaps
+between files from both collections, and this allows us to select
+which ones to use at run time. Both accounts are under the system
+problem number `M1416` for simplicity of use.
 
 Up to 30 users can log in at the same time (via separate telnet
 connections to the emulator) but each account can only be logged in on
@@ -412,9 +409,9 @@ no parameters) to upload all files intended for each account, or
 
 ### Adding new files
 
-If you create a new MAD, FAP or runcom file and it is in one of the
-existing directories, it will be uploaded automatically by the
-relevant `upload-` commands. If you want it to be automatically
+If you create a new MAD, FAP, script tape or runcom file and it is in
+one of the existing directories, it will be uploaded automatically by
+the relevant `upload-` commands. If you want it to be automatically
 compiled, also edit the relevant runcom file.
 
 Files should follow the same column layout as existing ones. You don't
@@ -484,8 +481,28 @@ We can use this facility with the emulator as well.
 * If you get an error `s709: commopen: bind failed: Address already in
   use` when restarting CTSS, wait a few seconds and try again.
 
+## Licence
+
+The s709 emulator, ctss-kit and utilities under `ctss/` are from Dave
+Pits' [IBM 7090/7094 page](https://cozx.com/dpitts/ibm7090.html) with
+minor modifications. There is no explicit license, but Dave has
+granted permission for this code to be redistributed.
+
+The ELIZA and SLIP code under `eliza/` is based on work by Joseph
+Weizenbaum discovered in the MIT archive. Weizenbaum's estate has
+kindly agreed for this to be open sourced under a [Creative Commons
+CC0 public domain
+license](https://creativecommons.org/publicdomain/zero/1.0/).
+
+The ELIZA script
+[`eliza/src/ELIZA/tape.200`](eliza/src/ELIZA/tape.200) is adapted from
+Weizenbaum's article for the _Communications of the ACM_ in 1966.
+
+All other parts of this repo not covered by the above are also
+licenses as Creative Commons CC0 public domain.
+
 ## Questions, bugs etc
 
 Please raise an issue/pull request if you see any problems, or email
-me at rupert@rupert-lane.org
+me at eliza@rupert-lane.org
 
