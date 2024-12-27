@@ -4,6 +4,10 @@ original 1965 code for
 [CTSS](https://en.wikipedia.org/wiki/Compatible_Time-Sharing_System),
 using an emulated IBM 7094.
 
+* [elizagen.org blog
+  post](https://sites.google.com/view/elizagen-org/blog/eliza-reanimated)
+* [Video demo](https://youtu.be/j5Tw-XVcsRE)
+
 It comprises:
 
 * The ELIZA and SLIP library [source
@@ -13,8 +17,8 @@ It comprises:
   [transcribed](https://github.com/jeffshrager/elizagen.org/tree/master/1965_Weizenbaum_MAD-SLIP)
   by Anthony Hay and Arthur Schwarz respectively.
 * The s709 [emulator](https://cozx.com/dpitts/ibm7090.html) for the
-  IBM 7094 by Dave Pitts and Paul Pierce, along with reconstructed
-  CTSS operating system code.
+  IBM 7094 by Dave Pitts, along with reconstructed CTSS operating
+  system code.
 * Build and test scripts by Rupert Lane.
 
 ## Prerequisites
@@ -484,9 +488,10 @@ We can use this facility with the emulator as well.
 ## Licence
 
 The s709 emulator, ctss-kit and utilities under `ctss/` are from Dave
-Pits' [IBM 7090/7094 page](https://cozx.com/dpitts/ibm7090.html) with
-minor modifications. There is no explicit license, but Dave has
-granted permission for this code to be redistributed.
+Pits' [IBM 7090/7094 page](https://cozx.com/dpitts/ibm7090.html),
+based on previous work on s709 by Paul Pierce, with minor
+modifications by Rupert Lane. There is no explicit license, but Dave
+has granted permission for this code to be redistributed.
 
 The ELIZA and SLIP code under `eliza/` is based on work by Joseph
 Weizenbaum discovered in the MIT archive. Weizenbaum's estate has
@@ -501,8 +506,14 @@ Weizenbaum's article for the _Communications of the ACM_ in 1966.
 All other parts of this repo not covered by the above are also
 licenses as Creative Commons CC0 public domain.
 
+## Acknowledgements
+
+Thanks to everyone on [Team
+ELIZA](https://sites.google.com/view/elizaarchaeology/team?authuser=0)
+for their help and advice,
+
 ## Questions, bugs etc
 
 Please raise an issue/pull request if you see any problems, or email
-me at eliza@rupert-lane.org
+me at rupert@timereshared.com
 
