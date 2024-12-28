@@ -12,8 +12,8 @@ DEST=../../bin
 rm -rf ctss/src/ ctss/bin/
 mkdir -p ctss/src/ ctss/bin/
 cd ctss/src/
-tar xzf ../dist/s709-2.4.1_eliza-0.1.tar.gz
-cd s709-2.4.1_eliza-0.1/
+tar xzf ../dist/s709-2.4.2.tar.gz
+cd s709-2.4.2/
 make
 cp ${S709_BINS} ${DEST}
 

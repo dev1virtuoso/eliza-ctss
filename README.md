@@ -490,8 +490,8 @@ We can use this facility with the emulator as well.
 The s709 emulator, ctss-kit and utilities under `ctss/` are from Dave
 Pits' [IBM 7090/7094 page](https://cozx.com/dpitts/ibm7090.html),
 based on previous work on s709 by Paul Pierce, with minor
-modifications by Rupert Lane. There is no explicit license, but Dave
-has granted permission for this code to be redistributed.
+modifications by Rupert Lane. This uses the MIT license, see
+[LICENSE.txt](ctss/LICENSE.txt).
 
 The ELIZA and SLIP code under `eliza/` is based on work by Joseph
 Weizenbaum discovered in the MIT archive. Weizenbaum's estate has
