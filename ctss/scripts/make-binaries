@@ -14,6 +14,7 @@ mkdir -p ctss/src/ ctss/bin/
 cd ctss/src/
 tar xzf ../dist/s709-2.4.2.tar.gz
 cd s709-2.4.2/
+cp ../../patches/s709/*.c .
 make
 cp ${S709_BINS} ${DEST}
 
