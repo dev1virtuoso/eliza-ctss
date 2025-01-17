@@ -134,6 +134,11 @@ user `eliza` and `r eliza` like before. (You do not need to recompile it).
 For more details on any of these steps, and to find out how to make
 changes to the source code, see [`HACKING.md`](HACKING.md).
 
+## The restoration process
+
+[`RESTORATION.md`](RESTORATION.md) contains details on how we restored
+ELIZA into a running state.
+
 ## Known bugs and issues
 
 The goal of this repository is to get ELIZA running in its original
