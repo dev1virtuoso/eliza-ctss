@@ -19,7 +19,8 @@ Python and shell scripts. This has been tested on
 but may work on other Unix/Linux flavours.
 
 You will also need the `telnet` command line program or a GUI telnet
-client.
+client. The command line program can be installed by `sudo apt install
+telnet` on Debian/Ubuntu or `brew install telnet` on MacOS.
 
 ## Quickstart
 
@@ -54,12 +55,10 @@ $ upload-all
 ```
 
 4. Start CTSS by typing `runctss`
-5. Open another window and ensure you have a telnet client - eg via
-   `sudo apt install telnet` on Debian/Ubuntu or `brew install telnet`
-   on MacOS.
-6. Type `telnet 0 7094`
-7. Type `login slip` and give the password `slip`
-8. The screen should now look something like
+5. Start your telnet client and connect to localhost port 7094. For
+the command line client you can type `telnet 0 7094`.
+6. In the telnet session, type `login slip` and give the password `slip`
+7. The screen should now look something like
 
 ```
 $ telnet 0 7094
@@ -84,15 +83,15 @@ IT IS A DEBUG AND NOT FULLY FUNCTIONAL VERSION.
  CTSS BEING USED IS: MIT8C0
 R .050+.000
 ```
-9. Type `runcom make`
-10. A long series of compile messages should follow, ending with it
-    printing `MAKE HAS BEEN RUN `
-11. Type `login eliza` and give the password `eliza`
-12. Type `runcom make` again and wait for the `MAKE HAS BEEN RUN`
+8. Type `runcom make`
+9. A long series of compile messages should follow, ending with
+   itprinting `MAKE HAS BEEN RUN `
+10. Type `login eliza` and give the password `eliza`
+11. Type `runcom make` again and wait for the `MAKE HAS BEEN RUN`
     message.
-13. Type `r eliza`
-14. Give the answer `200` to the prompt of which script to use
-15. ELIZA will print a greeting and you can now interact with her.
+12. Type `r eliza`
+13. Give the answer `200` to the prompt of which script to use
+14. ELIZA will print a greeting and you can now interact with her.
     Keep your responses below 72 characters and press Enter twice to
     submit. This is how your screen could look after a first response.
 
@@ -110,9 +109,9 @@ IN WHAT WAY
 INPUT
 ```
 
-16. When you are finished, press `Control-\ ` (backslash) to interrupt and then
+15. When you are finished, press `Control-\ ` (backslash) to interrupt and then
     type `logout`.
-18. Shut down CTSS cleanly. You will need to switch back to the 
+16. Shut down CTSS cleanly. You will need to switch back to the
     *main emulator window* you started earlier - this cannot be done 
     from the telnet session.
 
@@ -129,8 +128,8 @@ Execute the following, pressing Enter after each non Control-C line.
 * Type `st`
 * Type `q` and Enter to exit.
 
-19. If you want to run ELIZA again, do `runctss` and then telnet in as
-user `ELIZA` and `r eliza` like before.
+17. If you want to run ELIZA again, do `runctss` and then telnet in as
+user `eliza` and `r eliza` like before. (You do not need to recompile it).
 
 For more details on any of these steps, and to find out how to make
 changes to the source code, see [`HACKING.md`](HACKING.md).
