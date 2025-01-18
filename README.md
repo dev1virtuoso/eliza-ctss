@@ -134,10 +134,10 @@ user `eliza` and `r eliza` like before. (You do not need to recompile it).
 For more details on any of these steps, and to find out how to make
 changes to the source code, see [`HACKING.md`](HACKING.md).
 
-## The restoration process
+## The reconstruction process
 
-[`RESTORATION.md`](RESTORATION.md) contains details on how we restored
-ELIZA into a running state.
+[`RECONSTRUCTION-CARD.md`](RECONSTRUCTION-CARD.md) contains details on
+how we got ELIZA into a running state.
 
 ## Known bugs and issues
 

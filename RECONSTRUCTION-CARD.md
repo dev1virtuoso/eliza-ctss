@@ -1,19 +1,64 @@
-This document describes what we did to restore ELIZA into a form that
-could be run on the emulator. See also the
-[paper](http://arxiv.org/abs/2501.06707) which provides much more
+*Project Name*: ELIZA MAD/SLIP Reconstruction
+
+*Description*: This document describes what was undertaken in 2024 to
+restore ELIZA into a form that could be run on an emulator. See also
+the [paper](http://arxiv.org/abs/2501.06707) which provides much more
 context on ELIZA and CTSS than given here.
 
-There are two components: the SLIP library of supporting
-list-processing functions, and the ELIZA main program code/scripts.
+*Created*: 16 January 2025
+
+*Version History*: See [github](https://github.com/rupertl/eliza-ctss/commits/main/)
+
+*Card Author*: Rupert Lane
+
+---
+
+There are three components to this reconstruction:
+
+* the emulated machine and operating system
+* the SLIP library of supporting list-processing functions
+* the ELIZA main program code/scripts.
+
+# Emulated machine and operating system
+
+*Inputs*:
+
+* The IBM 7094 emulator
+  [s709](https://cozx.com/dpitts/tarballs/ibm709x/s709-2.4.3.tar.gz)
+* The reconstructed CTSS operating system
+  [ctss-kit](https://cozx.com/dpitts/tarballs/ibm709x/ctss-1.0.7.kit.tar.gz)
+* The set of
+  [utilities](https://cozx.com/dpitts/tarballs/ibm709x/utils-1.1.14.tar.gz)
+  to convert file formats.
+
+*Result*:
+
+* A working IBM 7094 emulated machine running CTSS.
+
+These components are essentially unchanged from the upstream versions
+created by [Dave Pitts](https://cozx.com/dpitts/ibm7090.html).
+
+We did the following work
+
+* automate some of the setup steps in `ctss/scripts`.
+* fix some host portability issues (as of 16 January 2025 these had
+  all been rolled into the upstream version).
+* document how to use the emulator and operating system in
+  [`README.md`](README.md) and [`HACKING.md`](HACKING.md).
 
 # SLIP
 
-*Input*: The SLIP library printout
+*Inputs*: 
+
+* The SLIP library printout
 [02-000311065.pdf](https://github.com/jeffshrager/elizagen.org/blob/master/1965_Weizenbaum_MAD-SLIP/Slip/CTSS/02-000311065.pdf)
 found amongst Weizenbaum's papers.
+* The emulated machine and operating system described above.
 
-*Result*: A CTSS library file containing all the functions needed by
-ELIZA. In the CTSS environment this is named as `SLIP BSS`.
+*Result*: 
+
+A CTSS library file containing all the functions needed by ELIZA. In
+the CTSS environment this is named as `SLIP BSS`.
 
 ## Convert the PDF into source code files
 
@@ -124,6 +169,7 @@ versions existed in the ELIZA source code we wanted to use instead.
 
 *Inputs*:
 
+- The emulated machine and operating system described above.
 - The SLIP library described above.
 - The ELIZA code and script
   [printout](https://github.com/jeffshrager/elizagen.org/blob/master/1965_Weizenbaum_MAD-SLIP/ORIGINAL_ELIZA_IN_MAD_SLIP_CC0_For_Resease.pdf)
@@ -398,5 +444,8 @@ build scripts and ELIZA personality scripts.
 | Final LOC                        | 1703     | 417       |
 | DIff                             | -268     | 7         |
 
-Rupert Lane  
-January 2025
+# Why 'Restoration Card'?
+
+This is an adaption of a concept used for AI model documentation. See
+[Model Cards for Model Reporting](https://arxiv.org/abs/1810.03993)
+for more details.
