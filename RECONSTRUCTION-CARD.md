@@ -7,7 +7,7 @@ context on ELIZA and CTSS than given here.
 
 *Created*: 16 January 2025
 
-*Version History*: See [github](https://github.com/rupertl/eliza-ctss/commits/main/)
+*Version History*: See [github](https://github.com/rupertl/eliza-ctss/commits/main/RECONSTRUCTION-CARD.md).
 
 *Card Author*: Rupert Lane
 
@@ -174,7 +174,7 @@ versions existed in the ELIZA source code we wanted to use instead.
 - The ELIZA code and script
   [printout](https://github.com/jeffshrager/elizagen.org/blob/master/1965_Weizenbaum_MAD-SLIP/ORIGINAL_ELIZA_IN_MAD_SLIP_CC0_For_Resease.pdf)
   found amongst Weizenbaum's papers.
-- The input script Weizenbaum used in his 1965 CACM [paper](https://dl.acm.org/doi/10.1145/365153.365168).
+- The input script Weizenbaum used in his 1966 CACM [paper](https://dl.acm.org/doi/10.1145/365153.365168).
 
 *Result*:
 
