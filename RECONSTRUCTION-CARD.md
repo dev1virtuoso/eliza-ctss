@@ -444,7 +444,7 @@ build scripts and ELIZA personality scripts.
 | Final LOC                        | 1703     | 417       |
 | DIff                             | -268     | 7         |
 
-# Why 'Restoration Card'?
+# Why 'Reconstruction Card'?
 
 This is an adaption of a concept used for AI model documentation. See
 [Model Cards for Model Reporting](https://arxiv.org/abs/1810.03993)
