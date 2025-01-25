@@ -207,7 +207,9 @@ is a three digit number.
 
 We have two examples, `100` for the script found in the printout of
 the ELIZA source code, and `200` which is from the CACM article
-written by Weizenbaum. We suggest using `200`.
+written by Weizenbaum. Try both! Script 200 has more features, but
+also triggers some bugs in the source code. See
+[`etc/running-eliza.txt`](etc/running-eliza.txt) for a comparison.
 
 ELIZA will then print a welcome message and prompt you for input. Type
 your response, keeping each line below 78 characters, and press Enter

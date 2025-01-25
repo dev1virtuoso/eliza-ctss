@@ -12,7 +12,8 @@ an even better ELIZA!
 ## Missing features
 
 These are described in the 1966 CACM ELIZA paper but are not
-implemented in the source code:
+implemented in the source code, so you will see these if you use
+script 200.
 
 1. The preliminary transformation `PRE` reassembly pattern, e.g. as used in
 

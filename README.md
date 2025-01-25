@@ -90,22 +90,23 @@ R .050+.000
 11. Type `runcom make` again and wait for the `MAKE HAS BEEN RUN`
     message.
 12. Type `r eliza`
-13. Give the answer `200` to the prompt of which script to use
+13. Give the answer `100` to the prompt of which script to use
 14. ELIZA will print a greeting and you can now interact with her.
     Keep your responses below 72 characters and press Enter twice to
     submit. This is how your screen could look after a first response.
 
 ```
 r eliza
-W 1331.5
+W 1916.6
 EXECUTION.
 WHICH SCRIPT DO YOU WISH TO PLAY
-200
-HOW DO YOU DO . PLEASE TELL ME YOUR PROBLEM
+100
+HOW DO YOU DO . I AM THE DOCTOR . PLEASE SIT DOWN AT THE TYPEWRITER AND TELL ME
+YOUR PROBLEM .
 INPUT
 Men are all alike.
 
-IN WHAT WAY
+DID YOU THINK THEY MIGHT NOT BE ALL ALIKE
 INPUT
 ```
 
