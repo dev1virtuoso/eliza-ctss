@@ -85,7 +85,7 @@ R .050+.000
 ```
 8. Type `runcom make`
 9. A long series of compile messages should follow, ending with
-   itprinting `MAKE HAS BEEN RUN `
+   it printing `MAKE HAS BEEN RUN `
 10. Type `login eliza` and give the password `eliza`
 11. Type `runcom make` again and wait for the `MAKE HAS BEEN RUN`
     message.

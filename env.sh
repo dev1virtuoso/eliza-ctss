@@ -1,7 +1,7 @@
 # Source this into your shell to set up PATH and locations of disks,
 # tapes etc
 #
-# Run this from the root dirctory of the repo, and then execute all
+# Run this from the root directory of the repo, and then execute all
 # commands from there.
 
 # The telnet port to connect to when CTSS is running. Change here if
