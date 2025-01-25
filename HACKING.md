@@ -247,9 +247,8 @@ Execute the following, pressing Enter after each non Control-C line.
 * Type `q` and Enter to exit.
 
 What is going on here? On the real IBM 7094 the operator would
-initiate shutdown by pressing the stop button (Control-C on the
-emulator) then toggling in a value on the front panel (`ek` in the
-emulator) and then resuming (`st`).
+initiate shutdown by toggling in a value on the front panel (`ek`, for
+enter keys, in the emulator)
 
 See [here](etc/shutting-down-ctss.txt) for a transcript of how this
 looks.
