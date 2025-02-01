@@ -239,7 +239,8 @@ CTSS did have a 'huge loader' called `L` that relaxed these limits.
 However, this was not included in the emulated system. Luckily, the
 source code for this was included in the CTSS source code tapes so it
 was possible for us to build `L` under the ELIZA account and proceed
-with this as the loader for ELIZA.
+with this as the loader for ELIZA. (As of 1st February 2025 this has
+now been incorporated back into the base ctss-kit.)
 
 ## Fix potentially missing code in ELIZA
 

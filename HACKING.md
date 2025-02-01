@@ -173,8 +173,22 @@ See [here](etc/running-ctss.txt) for a transcript of how this looks.
 
 ## Compiling all the source
 
-We use a `runcom` file, which is a type of batch script. Ensure CTSS
-is booted and login as user `SLIP`. The file we will use is in
+We use a `runcom` file, which is a type of batch script. You will need
+to run these scripts under 3 separate users.
+
+### 1. Compile the huge loader
+
+Ensure CTSS is booted and login as user `SYSDEV`, password `SYSTEM`.
+
+The file we want is called `MKHUGE RUNCOM`. Execute it by running:
+
+```
+RUNCOM MKHUGE
+```
+
+### 2. Compile the SLIP library
+
+Login as user `SLIP`, password `SLIP`. The file we will use is in
 `MAKE RUNCOM`. To execute it:
 
 ```
@@ -185,10 +199,12 @@ This will compile all the FAP assembly and MAD source files, producing
 object files and listings for each module. At the end, it will run
 tests and combine the object files into a library.
 
-Next, login as `ELIZA` and run the same command. (Note this is a
-different file as we are now in the ELIZA directory). This will
-compile the CTSS huge linker and all the ELIZA MAD source code. It
-will then load ELIZA and SLIP into memory and save this as an
+### 3. Compile the ELIZA program
+
+Next, login as `ELIZA` (password `ELIZA`) and run the same 
+`RUNCOM MAKE` command. (Note this is a different file as we are now in
+the ELIZA directory). This will compile all the ELIZA MAD source code.
+It will then load ELIZA and SLIP into memory and save this as an
 executable called `ELIZA SAVED`.
 
 See [here](etc/compiling.txt) for a transcript of how this looks.

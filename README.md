@@ -6,6 +6,10 @@ using the s709 IBM 7094 emulator.
 * [elizagen.org blog
   post](https://sites.google.com/view/elizagen-org/blog/eliza-reanimated)
 * [Video demo](https://youtu.be/j5Tw-XVcsRE)
+* [Paper](http://arxiv.org/abs/2501.06707)
+
+Updating from an older version? See [`UPDATING.md`](UPDATING.md). Note
+there is a new step in the Quickstart where you need to login as `sysdev`.
 
 ## Prerequisites
 
@@ -57,7 +61,7 @@ $ upload-all
 4. Start CTSS by typing `runctss`
 5. Start your telnet client and connect to localhost port 7094. For
 the command line client you can type `telnet 0 7094`.
-6. In the telnet session, type `login slip` and give the password `slip`
+6. In the telnet session, type `login sysdev` and give the password `system`
 7. The screen should now look something like
 
 ```
@@ -65,33 +69,33 @@ $ telnet 0 7094
 Trying 0.0.0.0...
 Connected to 0.
 Escape character is '^]'.
-s709 2.4.1 COMM tty0 (KSR-37) from 127.0.0.1
+s709 2.4.3 COMM tty0 (KSR-37) from 127.0.0.1
 
-MIT8C0: 1 USER AT 12/22/14 1326.3, MAX = 30
+MIT8C0: 1 USER AT 02/01/25  921.5, MAX = 30
 READY.
 
-login slip
-W 1326.3
+login sysdev
+W 921.6
 Password
- M1416    11 LOGGED IN  12/22/14 1326.3 FROM 700000
- LAST LOGOUT WAS  12/22/14 1100.6 FROM 700000
- HOME FILE DIRECTORY IS M1416 SLIP
+ M1416     6 LOGGED IN  02/01/25  921.6 FROM 700000
+ HOME FILE DIRECTORY IS M1416 SYSDEV
 
 THIS IS A RECONSTRUCTED CTSS SYSTEM.
-IT IS A DEBUG AND NOT FULLY FUNCTIONAL VERSION.
+VERSION: 1.0.8
+BUILT: 01/25/25 1053.0
 
  CTSS BEING USED IS: MIT8C0
-R .050+.000
+R .033+.000
+
 ```
-8. Type `runcom make`
-9. A long series of compile messages should follow, ending with
-   it printing `MAKE HAS BEEN RUN `
-10. Type `login eliza` and give the password `eliza`
-11. Type `runcom make` again and wait for the `MAKE HAS BEEN RUN`
-    message.
-12. Type `r eliza`
-13. Give the answer `100` to the prompt of which script to use
-14. ELIZA will print a greeting and you can now interact with her.
+8. Type `runcom mkhuge` and wait for it to print `MKHUGE HAS BEEN RUN`.
+9. Type `login slip` and give the password `slip`
+10. Type `runcom make` and wait for it to print `MAKE HAS BEEN RUN`.
+11. Type `login eliza` and give the password `eliza`
+12. Type `runcom make` again and wait for `MAKE HAS BEEN RUN`.
+13. Type `r eliza`
+14. Give the answer `100` to the prompt of which [script](SCRIPTS.md) to use
+15. ELIZA will print a greeting and you can now interact with her.
     Keep your responses below 72 characters and press Enter twice to
     submit. This is how your screen could look after a first response.
 
@@ -110,9 +114,9 @@ DID YOU THINK THEY MIGHT NOT BE ALL ALIKE
 INPUT
 ```
 
-15. When you are finished, press `Control-\ ` (backslash) to interrupt and then
+16. When you are finished, press `Control-\ ` (backslash) to interrupt and then
     type `logout`.
-16. Shut down CTSS cleanly. You will need to switch back to the
+17. Shut down CTSS cleanly. You will need to switch back to the
     *main emulator window* you started earlier - this cannot be done 
     from the telnet session.
 
@@ -129,16 +133,23 @@ Execute the following, pressing Enter after each non Control-C line.
 * Type `st`
 * Type `q` and Enter to exit.
 
-17. If you want to run ELIZA again, do `runctss` and then telnet in as
+18. If you want to run ELIZA again, do `runctss` and then telnet in as
 user `eliza` and `r eliza` like before. (You do not need to recompile it).
 
-For more details on any of these steps, and to find out how to make
-changes to the source code, see [`HACKING.md`](HACKING.md).
+## Where to go next
 
-## The reconstruction process
+If you would like to try different personality scripts for ELIZA, read
+[`SCRIPTS.md`](SCRIPTS.md).
 
-[`RECONSTRUCTION-CARD.md`](RECONSTRUCTION-CARD.md) contains details on
-how we got ELIZA into a running state.
+To learn more about compiling ELIZA, and how to make your own changes
+to the soruce code, see [`HACKING.md`](HACKING.md).
+
+If you would like to read more about the process of reconstructing the
+code from the printouts, see
+[`RECONSTRUCTION-CARD.md`](RECONSTRUCTION-CARD.md).
+
+To find out more about CTSS, see my blog post series at
+[timereshared.com](https://timereshared.com/ctss/).
 
 ## Known bugs and issues
 

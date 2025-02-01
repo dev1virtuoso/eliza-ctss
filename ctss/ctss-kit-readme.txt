@@ -1,4 +1,4 @@
-2014/01/02 CTSS Install kit
+2025/01/25 CTSS Install kit
 
 This Kit archive contains the following tapes:
 
@@ -25,6 +25,7 @@ progs.tap       - Lisp test programs.
 quotas.tap      - User quotas file.
 salv4.tap       - Standalone Salvager.
 setup.tap	- The CTSS setup program.
+sysdev.tap	- System development files.
 util.tap        - ADMIN utilities.
 
 The command scripts:
@@ -269,6 +270,12 @@ IBM 7094-CTSS Simulator 2.3.5
  DISK INITIALIZATION COMPLETE.
  CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.
 
+ ATTACHING TO  M1416 SYSDEV                                             
+ COPY TO TEXT FILE   LOAD    FAP                                        
+ ...
+ DISK INITIALIZATION COMPLETE.                                          
+ CTSS IS FINISHED. YOU MAY NOW CLEAR CORE.    
+
 
 8. Make a backup of your dasd images:
 
@@ -316,7 +323,7 @@ Password
  HOME FILE DIRECTORY IS M1416 GUEST
 
 THIS IS A RECONSTRUCTED CTSS SYSTEM.
-IT IS A DEBUG AND NOT FULLY FUNCTIONAL VERSION.
+VERSION 1.0.8
 
  CTSS BEING USED IS: MITC80
 R .083+.000
@@ -358,7 +365,95 @@ W HHMM.T
 Connection closed by foreign host.
 
 
-3. To cleanly shutdown CTSS (You can't just kill it):
+3. To update the YEAR in the installed CTSS system:
+
+The SYSDEV password is "SYSTEM".
+
+$ telnet localhost 2023
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+s709 2.4.3 COMM tty0 (KSR-37) from 127.0.0.1
+
+MIT8C0: 1 USER AT MM/DD/YY 1520.3, MAX = 30
+READY.
+
+login sysdev
+W 1520.4
+Password
+ M1416     6 LOGGED IN  MM/DD/YY 1520.5 FROM 700000
+ HOME FILE DIRECTORY IS M1416 SYSDEV
+
+THIS IS A RECONSTRUCTED CTSS SYSTEM.
+VERSION 1.0.8
+
+ CTSS BEING USED IS: MIT8C0
+R .050+.000
+
+runcom mkyear
+W 1520.7
+MKYEAR STARTED
+MACR0008     M     CALL   MACRON  NAME,LIST     SUBROUTINE CALL MACRO
+MACR0054     M     SAVE   MACRO   ID,LIST       SAVE BASIC MACHINE CONDITIONS
+EQU00229     M     TYPE   MACRO   MESG,LOC,N    TYPE COMMENT TO CURRENT USER
+EQU00239     M     TYPEA  MACRO   MESG,LOC,N    TYPE COMMENT TO USER W/O C.R.
+EQU00249     M     TYPEF  MACRO   MESG,LOC,N    TYPE COMMENT IN FULL MODE
+     COMMON BREAK  72127
+     LENGTH   764
+MKYEAR HAS BEEN RUN
+R 1.316+.283
+
+logout
+W 1521.5
+ M1416     6 LOGGED OUT MM/DD/YY 1521.5 FROM 700000
+ TOTAL TIME USED =    .0 MIN.
+Connection closed by foreign host.
+
+For the new year to take effect the CTSS system must be shutdown and rebooted.
+
+
+4. To install the HUGE loaded (if needed):
+
+The SYSDEV password is "SYSTEM".
+
+telnet localhost 2023
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+s709 2.4.3 COMM tty0 (KSR-37) from 127.0.0.1
+
+MIT8C0: 1 USER AT 01/18/25 1535.9, MAX = 30
+READY.
+
+login sysdev
+W 1536.0
+Password
+ M1416     6 LOGGED IN  MM/DD/YY 1536.2 FROM 700000
+ HOME FILE DIRECTORY IS M1416 SYSDEV
+
+THIS IS A RECONSTRUCTED CTSS SYSTEM.
+VERSION 1.0.8
+
+ CTSS BEING USED IS: MIT8C0
+R .050+.000
+
+runcom mkhuge
+W 1536.4
+MKHUGE STARTED
+     LENGTH  6432
+MKHUGE HAS BEEN RUN
+R 1.200+.383
+
+logout
+W 1536.7
+ M1416     6 LOGGED OUT 01/18/25 1536.7 FROM 700000
+ TOTAL TIME USED =    .0 MIN.
+Connection closed by foreign host.
+
+The huge loader is now available as a standard CTSS command 'L'.
+
+
+5. To cleanly shutdown CTSS (You can't just kill it):
 
 In the s709 window enter a CTRL-C and you will get a prompt:
 

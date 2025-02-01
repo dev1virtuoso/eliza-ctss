@@ -23,4 +23,5 @@ setupctss ${TAPE}/util.tap
 setupctss ${TAPE}/cmfl01.tap
 setupctss ${TAPE}/guest.tap
 setupctss ${TAPE}/progs.tap
+setupctss ${TAPE}/sysdev.tap
 cleanupctss

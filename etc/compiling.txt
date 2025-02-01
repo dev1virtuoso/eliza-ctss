@@ -1,27 +1,49 @@
-$ telnet 127.0.0.1 7094
-Trying 127.0.0.1...
-Connected to 127.0.0.1.
+$ telnet 0 7094
+Trying 0.0.0.0...
+Connected to 0.
 Escape character is '^]'.
-s709 2.4.1 COMM tty0 (KSR-37) from 127.0.0.1
+s709 2.4.3 COMM tty0 (KSR-37) from 127.0.0.1
 
-
-MIT8C0: 1 USER AT 12/21/14 1113.1, MAX = 30
+MIT8C0: 1 USER AT 02/01/25  921.5, MAX = 30
 READY.
 
-login slip
-W 1113.1
+login sysdev
+W 921.6
 Password
- M1416    11 LOGGED IN  12/21/14 1113.1 FROM 700000
+ M1416     6 LOGGED IN  02/01/25  921.6 FROM 700000
+ HOME FILE DIRECTORY IS M1416 SYSDEV
+
+THIS IS A RECONSTRUCTED CTSS SYSTEM.
+VERSION: 1.0.8
+BUILT: 01/25/25 1053.0
+
+ CTSS BEING USED IS: MIT8C0
+R .033+.000
+
+runcom mkhuge
+W 923.0
+MKHUGE STARTED
+     LENGTH  6432
+MKHUGE HAS BEEN RUN
+R .333+.066
+
+login slip
+W 923.9
+Password
+ M1416     6 LOGGED OUT 02/01/25  923.9 FROM 700000
+ TOTAL TIME USED =    .0 MIN.
+ M1416    11 LOGGED IN  02/01/25  923.9 FROM 700000
  HOME FILE DIRECTORY IS M1416 SLIP
 
 THIS IS A RECONSTRUCTED CTSS SYSTEM.
-IT IS A DEBUG AND NOT FULLY FUNCTIONAL VERSION.
+VERSION: 1.0.8
+BUILT: 01/25/25 1053.0
 
  CTSS BEING USED IS: MIT8C0
-R .050+.000
+R .016+.000
 
 runcom make
-W 1113.2
+W 924.0
   MAKE STARTED
 $ ==== REMOVING OLD FILES
 $ IGNORE ANY MESSAGES LIKE NO FILES WITH SECOND NAME
@@ -72,7 +94,7 @@ LENGTH 00101.  TV SIZE 00004.  ENTRY 00014
 $ COMPILING LISTMT
 LENGTH 00061.  TV SIZE 00003.  ENTRY 00012
 $ COMPILING LISTRD
-LENGTH 01144.  TV SIZE 00024.  ENTRY 00201.  FIRST UNUSED COMMON 77313.
+LENGTH 01143.  TV SIZE 00024.  ENTRY 00201.  FIRST UNUSED COMMON 77313.
 $ COMPILING MADATR
 LENGTH 00130.  TV SIZE 00005.  ENTRY 00016
 $ COMPILING MADIN
@@ -193,70 +215,30 @@ TESTING INLSTL
 $ ==== FINISHED
 $ MAKE HAS BEEN RUN SHOULD BE PRINTED FINALLY
   MAKE HAS BEEN RUN
-R 3.750+1.833
+R 4.166+2.016
 
 login eliza
-W 1114.2
+W 924.4
 Password
- M1416    11 LOGGED OUT 12/21/14 1114.3 FROM 700000
- TOTAL TIME USED =    .0 MIN.
- M1416    10 LOGGED IN  12/21/14 1114.3 FROM 700000
+ M1416    11 LOGGED OUT 02/01/25  924.4 FROM 700000
+ TOTAL TIME USED =    .1 MIN.
+ M1416    10 LOGGED IN  02/01/25  924.4 FROM 700000
  HOME FILE DIRECTORY IS M1416 ELIZA
 
 THIS IS A RECONSTRUCTED CTSS SYSTEM.
-IT IS A DEBUG AND NOT FULLY FUNCTIONAL VERSION.
+VERSION: 1.0.8
+BUILT: 01/25/25 1053.0
 
  CTSS BEING USED IS: MIT8C0
-R .000+.000
+R .016+.000
 
 runcom make
-W 1114.3
+W 924.5
   MAKE STARTED
 $ ==== REMOVING OLD FILES
 $ IGNORE ANY MESSAGES LIKE NO FILES WITH SECOND NAME
  NO FILES WITH SECOND NAME    BCD FOUND.
  NO FILES WITH SECOND NAME    BSS FOUND.
-$ ==== MAKING THE HUGE LOADER
-$ IGNORE ALL TD/D WWRNINGS PRINTED
-00304     TD           TXH     =HR           OPEN FOR READING                         LO
-00305     TD           TXH     NAME1         NAME LIST                                LO
-00306     TD           TXH     NAME1+1                                                LO
-00307     TD           TXH     =-0                                                    LO
-00308     TD           TXH     =-0                                                    LO
-00309     TD           TXH     OPNERR        COMPLAIN AND GO TO NEXT                  LO
-00310     TD           TXH     OPNLOC                                                 LO
-00344     TD           TXH     1
-00423     TD           TXH     MOVFIL                                                 LO
-00424     TD           TXH     MOVFIL+1                                               LO
-00425     TD           TXH     *+1           NOT FOUND OKAY                           LO
-00427     TD           TXH     =HW           FOR WRITING                              LO
-00428     TD           TXH     MOVFIL                                                 LO
-00429     TD           TXH     MOVFIL+1                                               LO
-00430     TD           TXH     =1            TEMPORARY MODE                           LO
-00431     TD           TXH     =2            ON THE DISK                              LO
-00433     TD           TXH     MOVFIL                                                 LO
-00434     TD           TXH     MOVFIL+1                                               LO
-00435     TD           TXH     =0                                                     LO
-00437     TD           TXH     =-0                                                    LO
-00438     TD           TXH     =-0                                                    LO
-00440     TD           TXH     MOVFIL                                                 LO
-00441     TD           TXH     MOVFIL+1                                               LO
-00450     TD           TXH     1             A ONE FOR DORMNT CALL TO CHNCOM
-00536     D            TXL     H,2           SKIP IF 7IX'S MODE
-00613     TD           TXH     NAME1                                                  LO
-00614     TD           TXH     NAME1+1                                                LO
-00615     TD           TXH     =0                                                     LO
-00617     TD           TXH     RDEOF                                                  LO
-00618     TD           TXH     REFCT                                                  LO
-00653     TD           TXH     NAME1                                                  LO
-00654     TD           TXH     NAME1+1                                                LO
-00742     D            TXL     F,6           SKIP IF NO RELOCATION
-00942     TD           TXH     NAME1                                                  LO
-00943     TD           TXH     NAME1+1                                                LO
-01197     TD           TXH     BUSY          COMFIL BUSY
-01281.001 TD           TXH     1
-01282.002 T            SXA     BEGIN
-     LENGTH  6432
 $ ==== COMPILING ELIZA
 $ COMPILING CHANGE
 LENGTH 00655.  TV SIZE 00030.  ENTRY 00130
@@ -272,10 +254,9 @@ $ COMPILING TPRINT
 LENGTH 00206.  TV SIZE 00014.  ENTRY 00040
 $ ==== MAKING THE ELIZA LIBRARY
 $ ==== LOADING ELIZA
-EXECUTION.
 $ ==== FINISHED
 $ PROGRAM WRITTEN TO  ELIZA SAVED
 $ TYPE  R ELIZA  TO START IT
 $ MAKE HAS BEEN RUN SHOULD BE PRINTED FINALLY
   MAKE HAS BEEN RUN
-R 1.000+.383
+R .700+.266
