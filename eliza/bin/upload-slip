@@ -20,6 +20,12 @@ do
     upload SLIP $file
 done
 
+echo Uploading SLIP-duplicates
+for file in eliza/src/SLIP/SLIP-duplicates/*.fap
+do
+    upload SLIP $file
+done
+
 echo Uploading SLIP-reconstructed
 for file in eliza/src/SLIP/SLIP-reconstructed/*.mad
 do

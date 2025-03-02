@@ -2,6 +2,39 @@ This document describes each step of the setup process in more
 detail, and provides information about changing the source code and
 uploading/downloading files from CTSS.
 
+This repo contains two components: CTSS and ELIZA.
+
+## CTSS structure
+
+Under `ctss/` you will find:
+
+* `dist/`: upstream tar files for the s709 simulator and associated utilities
+* `src/`: the build area for the above
+* `bin/`: the binaries produced from the above
+* `scripts/`: scripts using the above binaries to perform tasks like
+setting up CTSS
+* `cmd/`: files read by s709 at run time to determine configuration
+* `tape/`: virtual tape files read by s709 for tasks like setting up
+the OS
+
+## ELIZA structure
+
+Under `eliza/` you will find
+
+* `bin`: utilities for the host (your PC) to deal with source code
+  files and upload them to the guest (CTSS)
+* `src/SLIP`: the CTSS source code for the SLIP library used by ELIZA,
+  which is in a mix of FAP (IBM 7090 assembly language) and MAD (a
+  ALGOL-58 inspired high level language)
+* `src/ELIZA`: the source for ELIZA itself, which is written in MAD
+  and depends on the SLIP library, along with some script files that
+  determines ELIZA's personality at run time.
+
+## Building the source
+
+The next few sections describe the steps taken in the Quickstart in
+more detail.
+
 ## `env.sh`
 
 This file should be read in to your shell to set up the path and
@@ -76,8 +109,8 @@ This will start the emulator and show who is logged in.
 In another window, open a telnet client and connect to localhost port
 7094, eg by typing `telnet 0 7094`.
 
-Type `login` and then the user name `eliza` or `slip`. It will prompt
-for a password which is the same as the user name,
+Type `login` and then the user name `eliza`. It will prompt for a
+password which is the same as the user name,
 
 We use separate users for ELIZA and SLIP as there are some overlaps
 between files from both collections, and this allows us to select
@@ -100,8 +133,8 @@ Some quick points to get you orientated
 * There is no prompt, but you will know CTSS is ready for input when
   it prints `R` followed by 2 numbers (which represent the CPU time
   and swapping time for the last command run).
-* CTSS only understands upper case, but if you type lower case it will
-  be translated by the emulator.
+* At the command level, CTSS only understands upper case, but if you
+  type lower case it will be translated by the emulator.
 * Delete will delete the last character and Control-U will kill a
   whole line. This is an affordance of the emulator; on a a real
   teletype you'd type `#` to delete and `@` to kill; these keys still
@@ -198,6 +231,10 @@ RUNCOM MAKE
 This will compile all the FAP assembly and MAD source files, producing
 object files and listings for each module. At the end, it will run
 tests and combine the object files into a library.
+
+The printout from Weizenbaum contained duplicate implementations of
+some functions in MAD and FAP. We have chosen the MAD versions as the
+standard; if you want to try the FAP versions run `RUNCOM ALT` instead.
 
 ### 3. Compile the ELIZA program
 
@@ -305,8 +342,10 @@ memory.
 ### Editing online
 
 `EDC` is a line orientated text editor for card image files similar to
-`ed` or `edlin`. It is described in sections AH.3.12 and AH.3.02 of
-the [CTSS Programmer's
+`ed` or `edlin`. For more details, see my blog post at
+[timereshared.com](https://timereshared.com/ctss-ed-and-friends/); it
+is also described in sections AH.3.12 and AH.3.02 of the [CTSS
+Programmer's
 Guide](http://www.bitsavers.org/pdf/mit/ctss/CTSS_ProgrammersGuide_Dec69.pdf).
 `EDC` has the same commands as the former `ED`.
 

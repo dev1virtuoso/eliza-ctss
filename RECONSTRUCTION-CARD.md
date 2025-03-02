@@ -92,7 +92,6 @@ We categorised each file by moving it into a sub-directory of
 
 We did not compile or process further everything in:
 
-- `SLIP-duplicates`
 - `SLIP-discarded`
 
 ## Load files into CTSS
@@ -103,6 +102,7 @@ Each file from
 
 - `SLIP-fap`
 - `SLIP-core`
+- `SLIP-duplicates`
 - `SLIP-eliza`
 
 was uploaded to the SLIP directory on CTSS using CTSS filename
@@ -164,6 +164,35 @@ present in the original printout). To summarise what this does
 versions existed in the ELIZA source code we wanted to use instead.
 - Combine object code  to produce the output result file `SLIP BSS`
 - Copy this to the CTSS common file directory 4 so it can be used by ELIZA.
+
+## Alternative way to build the library
+
+In February 2025, we took a look again at the files in
+`SLIP-duplicates`. These are implementations of functions in FAP which
+already exist in MAD. The functions are:
+
+* `BOT`
+* `LIST`
+* `NAMTST`
+* `NEWBOT`
+* `NEWTOP`
+* `POPBOT`
+* `POPTOP`
+* `REMOVE`
+* `SEQLL`
+* `SEQLR`
+* `SEQRDR`
+* `TOP`
+
+To build a SLIP library we created an alternative build script
+[alt.runcom](eliza/src/SLIP/runcom/alt.runcom) that includes files
+from `SLIP-duplicates` and removes selected files from the other SLIP
+directories.
+
+The result is that these functions appear to work the same way as the
+MAD ones, but provide a 15-35% speed up at run time. We speculate that
+Weizenbaum re-implemented functions in FAP for this reason, but we
+cannot be sure if the MAD or the FAP versions came first. 
 
 # ELIZA
 
@@ -337,7 +366,8 @@ discovered bugs and missing features which are documented in
 # Summary
 
 Summary of all files in the original printouts and whether they were
-included in the final result:
+included in the final result, assuming we use the main build of SLIP
+and not the alternative one discussed above:
 
 | Sub-directory     | File         | Included |
 |-------------------|--------------|----------|
