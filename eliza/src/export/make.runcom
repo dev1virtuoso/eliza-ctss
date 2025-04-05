@@ -1,0 +1,80 @@
+$ Compiling SLIP
+FAP adv
+FAP hash
+FAP init
+FAP lstmt
+FAP many
+FAP memst
+FAP prinit
+FAP putget
+FAP sqin
+MAD adas
+MAD assmbl
+MAD bcdit
+MAD cntspc
+MAD conlst
+MAD das
+MAD equal
+MAD erardr
+MAD goody
+MAD inlstl
+MAD iralst
+MAD itsval
+MAD lcntr
+MAD letter
+MAD list
+MAD listmt
+MAD listrd
+MAD lnkbot
+MAD lpntr
+MAD lspntr
+MAD lsscpy
+MAD lsteql
+MAD madatr
+MAD madin
+MAD makedl
+MAD namtst
+MAD newtop
+MAD newval
+MAD noatvl
+MAD nodlst
+MAD partn
+MAD place
+MAD popper
+MAD put
+MAD rdrrev
+MAD reader
+MAD remove
+MAD rvect
+MAD seqrdr
+MAD sequen
+MAD split
+MAD subst
+MAD subtop
+MAD top
+MAD txtprt
+MAD xlook
+MAD xmatch
+MAD xmino
+MAD ymatch
+COMBIN * SLIP BSS      adv hash init lstmt many memst prinit
+COMBIN * SLIP BSS SLIP putget sqin
+COMBIN * SLIP BSS SLIP rvect adas iralst listmt lcntr list
+COMBIN * SLIP BSS SLIP namtst seqrdr top newtop remove popper
+COMBIN * SLIP BSS SLIP makedl reader erardr madin equal madatr
+COMBIN * SLIP BSS SLIP newval subst itsval noatvl xmino
+COMBIN * SLIP BSS SLIP put listrd
+COMBIN * SLIP BSS SLIP place rdrrev sequen lsteql lsscpy lspntr
+COMBIN * SLIP BSS SLIP split lnkbot nodlst conlst partn xmatch
+COMBIN * SLIP BSS SLIP ymatch assmbl das cntspc goody xlook
+COMBIN * SLIP BSS SLIP txtprt subtop lpntr
+COMBIN * SLIP BSS SLIP letter bcdit inlstl
+$ Compiling eliza
+MAD change
+MAD docbcd
+MAD eliza
+MAD lprint
+MAD tests
+MAD tprint
+COMBIN * ALL BSS slip change docbcd lprint tests tprint
+RUNCOM loader

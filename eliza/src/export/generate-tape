@@ -1,0 +1,147 @@
+#!/bin/sh
+
+# Generate a 'export tape' of ELIZA/SLIP source files, a single
+# account build runcom and runtime script files that can be imported
+# into an existing s709 CTSS system using setupctss. This may work on
+# simh as well, but I have not tried this.
+#
+# This command takes as an argument a CTSS programmer ID (user) such
+# as ELIZA or GUEST, assumed to be in problem ID M1416. It creates a
+# output tape eliza.img and packages this up along with a README into
+# a tar.gz and .zip file in ${OUTPUT}
+
+usage()
+{
+   echo "generate-s709-tape user"
+}
+
+if [ $# -ne 1 ]
+then
+   usage
+   exit
+fi
+
+USER=$1
+ACCT=`printf %6s%-6s M1416 $USER | tr [a-z] [A-Z]`
+
+make_obj() {
+    file=$1
+    filename=$(basename -- "$file")
+    name1="${filename%.*}"
+    name2="${filename##*.}"
+    img=${TMP}/${name1}-${name2}.img
+
+    # Transform eg "tape.101" to ".TAPE. 101"
+    if [ $name1 = "tape" ]
+    then
+        name1=".tape."
+    fi
+    # MAD files need special handling as the column format in the printout
+    # is not quite right.
+    if [ $name2 = "mad" ]
+    then
+        mad-text-to-cards < $file > ${TMP}/$name1.crd
+    else
+        cp $file ${TMP}/$name1.crd
+    fi
+
+    obj2img -a "$ACCT" -f $name1 -e $name2 -t \
+            -o ${img} ${TMP}/$name1.crd
+}
+
+FILES=$(cat <<-END
+eliza/src/export/make.runcom
+eliza/src/export/loader.runcom
+eliza/src/SLIP/SLIP-core/madatr.mad
+eliza/src/SLIP/SLIP-core/makedl.mad
+eliza/src/SLIP/SLIP-core/listmt.mad
+eliza/src/SLIP/SLIP-core/erardr.mad
+eliza/src/SLIP/SLIP-core/rvect.mad
+eliza/src/SLIP/SLIP-core/madin.mad
+eliza/src/SLIP/SLIP-core/remove.mad
+eliza/src/SLIP/SLIP-core/newval.mad
+eliza/src/SLIP/SLIP-core/itsval.mad
+eliza/src/SLIP/SLIP-core/popper.mad
+eliza/src/SLIP/SLIP-core/subst.mad
+eliza/src/SLIP/SLIP-core/seqrdr.mad
+eliza/src/SLIP/SLIP-core/top.mad
+eliza/src/SLIP/SLIP-core/namtst.mad
+eliza/src/SLIP/SLIP-core/list.mad
+eliza/src/SLIP/SLIP-core/lcntr.mad
+eliza/src/SLIP/SLIP-core/equal.mad
+eliza/src/SLIP/SLIP-core/reader.mad
+eliza/src/SLIP/SLIP-core/xmino.mad
+eliza/src/SLIP/SLIP-core/listrd.mad
+eliza/src/SLIP/SLIP-core/iralst.mad
+eliza/src/SLIP/SLIP-core/put.mad
+eliza/src/SLIP/SLIP-core/newtop.mad
+eliza/src/SLIP/SLIP-core/adas.mad
+eliza/src/SLIP/SLIP-core/noatvl.mad
+eliza/src/SLIP/SLIP-eliza/partn.mad
+eliza/src/SLIP/SLIP-eliza/nodlst.mad
+eliza/src/SLIP/SLIP-eliza/assmbl.mad
+eliza/src/SLIP/SLIP-eliza/split.mad
+eliza/src/SLIP/SLIP-eliza/cntspc.mad
+eliza/src/SLIP/SLIP-eliza/goody.mad
+eliza/src/SLIP/SLIP-eliza/xmatch.mad
+eliza/src/SLIP/SLIP-eliza/lsteql.mad
+eliza/src/SLIP/SLIP-eliza/sequen.mad
+eliza/src/SLIP/SLIP-eliza/xlook.mad
+eliza/src/SLIP/SLIP-eliza/das.mad
+eliza/src/SLIP/SLIP-eliza/lspntr.mad
+eliza/src/SLIP/SLIP-eliza/rdrrev.mad
+eliza/src/SLIP/SLIP-eliza/lnkbot.mad
+eliza/src/SLIP/SLIP-eliza/lpntr.mad
+eliza/src/SLIP/SLIP-eliza/conlst.mad
+eliza/src/SLIP/SLIP-eliza/lsscpy.mad
+eliza/src/SLIP/SLIP-eliza/ymatch.mad
+eliza/src/SLIP/SLIP-eliza/txtprt.mad
+eliza/src/SLIP/SLIP-eliza/place.mad
+eliza/src/SLIP/SLIP-eliza/subtop.mad
+eliza/src/SLIP/SLIP-fap/hash.fap
+eliza/src/SLIP/SLIP-fap/sqin.fap
+eliza/src/SLIP/SLIP-fap/lstmt.fap
+eliza/src/SLIP/SLIP-fap/putget.fap
+eliza/src/SLIP/SLIP-fap/prinit.fap
+eliza/src/SLIP/SLIP-fap/init.fap
+eliza/src/SLIP/SLIP-fap/adv.fap
+eliza/src/SLIP/SLIP-fap/memst.fap
+eliza/src/SLIP/SLIP-fap/many.fap
+eliza/src/SLIP/SLIP-reconstructed/inlstl.mad
+eliza/src/SLIP/SLIP-reconstructed/letter.mad
+eliza/src/SLIP/SLIP-reconstructed/bcdit.mad
+eliza/src/ELIZA/tests.mad
+eliza/src/ELIZA/change.mad
+eliza/src/ELIZA/lprint.mad
+eliza/src/ELIZA/eliza.mad
+eliza/src/ELIZA/tprint.mad
+eliza/src/ELIZA/docbcd.mad
+eliza/src/ELIZA/tape.100
+eliza/src/ELIZA/tape.200
+END
+)
+
+for f in $FILES
+do
+    make_obj $f
+done
+
+DEST=${TMP}/eliza-tape
+mkdir ${DEST}
+
+cat ${TMP}/*.img ${TAPE}/EOF.BIN > ${DEST}/eliza.img
+
+HASH=`git rev-parse --short HEAD`
+DATE=`date +%Y-%m-%d`
+tail -n +2 < eliza/src/export/README.in.txt \
+    | sed -e "s/<HASH>/$HASH/" \
+    | sed -e "s/<DATE>/$DATE/" > ${DEST}/README.txt
+
+cd ${TMP}
+tar czf eliza-tape.tar.gz eliza-tape/*
+zip -q eliza-tape.zip eliza-tape/*
+cd ..
+mv ${TMP}/eliza-tape.* ${OUTPUT}
+
+rm ${TMP}/*.crd ${TMP}/*.img ${TMP}/.tape..crd
+rm -rf ${DEST}
