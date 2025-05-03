@@ -36,7 +36,9 @@ There are three components to this reconstruction:
 * A working IBM 7094 emulated machine running CTSS.
 
 These components are essentially unchanged from the upstream versions
-created by [Dave Pitts](https://cozx.com/dpitts/ibm7090.html).
+created by [Dave Pitts](https://cozx.com/dpitts/ibm7090.html). Dave
+has written about the process of reconstructing CTSS
+[here](https://cozx.com/dpitts/ctss_recover.html).
 
 We did the following work
 
