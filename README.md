@@ -136,6 +136,22 @@ Execute the following, pressing Enter after each non Control-C line.
 18. If you want to run ELIZA again, do `runctss` and then telnet in as
 user `eliza` and `r eliza` like before. (You do not need to recompile it).
 
+## Docker start
+
+If you'd rather skip straight to the end, then the Dockerfile will create an
+image which contains all the software and runs CTSS. You can either telnet in
+normally, or run the `telnet2docker.sh` scripts which does it all for you!
+
+
+* Install Docker according to the guidelines for your OS
+* Build an image with `docker build -t eliza .`
+* Create a container from that image with `docker run -i -t -p 7094:7094 eliza`
+    This will start, allowing you to connect to CTSS via port 7094 from another shell
+* Connect to this container from your host machine with `./telnet2docker.sh` (or the manual steps above)
+* Once you've finished, simply stop the container with `Ctrl+C`, `q` and `return` Because
+    it's in a container you don't need the clean closedown sequence shown above.
+* Once you're bored, reclaim some disk space and remove the image with `docker image rm eliza`
+
 ## Where to go next
 
 If you would like to try different personality scripts for ELIZA, read
