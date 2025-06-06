@@ -40,10 +40,10 @@ proc runCommand {command completion} {
 # Login steps
 expect "READY."  # Sometimes it will timeout here, so be patient
 
-sendCredentials "login sysdev" "system" 
+sendCredentials "login sysdev" "system"
 runCommand "runcom mkhuge" "MKHUGE HAS BEEN RUN"
 
-sendCredentials "login slip" "slip" 
+sendCredentials "login slip" "slip"
 runCommand "runcom make" "MAKE HAS BEEN RUN"
 
 # And onto Eliza
