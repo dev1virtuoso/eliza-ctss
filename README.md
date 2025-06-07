@@ -8,6 +8,13 @@ using the s709 IBM 7094 emulator.
 * [Video demo](https://youtu.be/j5Tw-XVcsRE)
 * [Paper](http://arxiv.org/abs/2501.06707)
 
+See the Prerequisites and Quickstart section below to begin.
+
+Alternative ways to get ELIZA:
+
+* [Automated setup](docker/DOCKER-README.md) using Docker.
+* Add to an existing CTSS installation via a [virtual tape file](https://timereshared.com/files/ctss/eliza/).
+
 Updating from an older version? See [`UPDATING.md`](UPDATING.md). Note
 there is a new step in the Quickstart where you need to login as `sysdev`.
 
@@ -186,6 +193,9 @@ licensed as CC0.
 The ELIZA script
 [`eliza/src/ELIZA/tape.200`](eliza/src/ELIZA/tape.200) is adapted from
 Weizenbaum's article for the _Communications of the ACM_ in 1966.
+
+The [Docker automation](docker/DOCKER-README.md) was contributed by
+[@MarquisdeGeek](https://github.com/MarquisdeGeek)
 
 ## Acknowledgements
 
