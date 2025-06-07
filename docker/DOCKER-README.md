@@ -16,7 +16,7 @@ normally, or run the `telnet2docker.sh` scripts which does all the building and 
 
 
 * Install Docker according to the guidelines for your host OS
-* Build an image with `docker build -t eliza .`
+* From the `eliza-ctss` folder, build an image with `docker build . -t eliza -f docker/Dockerfile`
 * Create a container from that image with `docker run -i -t -p 7094:7094 eliza`
     This will start, allowing you to connect to CTSS via port 7094 from another shell on the host machine
 * Connect to this container from your host machine with `./telnet2docker.sh` (or use the manual steps in the main README.md in the root of this repo)
