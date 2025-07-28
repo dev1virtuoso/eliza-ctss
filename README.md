@@ -39,14 +39,6 @@ If you just want to try ELIZA, follow the below steps to bring up CTSS
 and get ELIZA compiled and running. If you'd like to find out more
 about each step, see [`HACKING.md`](HACKING.md).
 
-### macOS Installation
-1. Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-2. Install dependencies: `brew install telnet git make gcc python3 expect`
-3. Enter the repo's directory: `cd eliza-ctss`
-4. Run the setup script: `chmod +x setup-eliza-ctss.sh && ./setup-eliza-ctss.sh`
-5. Follow the interactive steps as prompted.
-
-### Other platform Installation
 1. Fetch this repo and set up the environment.
 
 ```
@@ -60,10 +52,9 @@ $ make-disks
 2. The next two commands will prompt you to press Enter a number of
 times and then `q` to quit.
 
-```
-$ format-disks
-$ install-disk-loader
-```
+When `.st` shown, type `q` and press Enter to quit: `$ format-disks`
+
+When `IBM 7094-CTSS Simulator 2.4.4` shown, Press Enter 4 times, then wait. When `QUIT` appears type `q` and press Enter to quit: `install-disk-loader`
 
 3. Continue installing CTSS and the ELIZA source.
 
