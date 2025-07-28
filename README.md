@@ -42,8 +42,9 @@ about each step, see [`HACKING.md`](HACKING.md).
 ### macOS Installation
 1. Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 2. Install dependencies: `brew install telnet git make gcc python3 expect`
-3. Run the setup script: `chmod +x setup-eliza-ctss.sh && ./setup-eliza-ctss.sh`
-4. Follow the interactive steps as prompted.
+3. Enter the repo's directory: `cd eliza-ctss`
+4. Run the setup script: `chmod +x setup-eliza-ctss.sh && ./setup-eliza-ctss.sh`
+5. Follow the interactive steps as prompted.
 
 ### Other platform Installation
 1. Fetch this repo and set up the environment.
