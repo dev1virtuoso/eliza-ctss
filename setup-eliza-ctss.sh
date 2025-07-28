@@ -51,13 +51,11 @@ expect -c '
     }
 '
 
-echo "Starting CTSS..."
-runctss &
-
-sleep 5
-
 echo "Please do not close this window until you want to stop CTSS"
 echo "Setup complete! Please follow these steps:"
 echo "1. Open a new terminal and connect via telnet: 'telnet 0 7094'"
 echo "2. Follow steps 6-15 in README.md to log in and run ELIZA"
 echo "To stop CTSS, run './shutdown-ctss.sh' or manually stop the emulator."
+
+echo "Starting CTSS..."
+runctss &
