@@ -24,11 +24,6 @@ cd eliza-ctss
 echo "Setting up environment..."
 source env.sh
 
-for cmd in make-binaries make-disks installctss add-eliza-users upload-all; do
-    echo "Running $cmd..."
-    $cmd
-done
-
 echo "Automating format-disks..."
 expect -c '
     set timeout 60
@@ -43,10 +38,10 @@ echo "Press Enter 4 times, then wait. When QUIT appears type q and press Enter"
 echo "Automating install-disk-loader..."
 install-disk-loader
 
-echo "Installing CTSS and the ELIZA source"
-installctss
-add-eliza-users
-upload-all
+for cmd in make-binaries make-disks installctss add-eliza-users upload-all; do
+    echo "Running $cmd..."
+    $cmd
+done
 
 echo "Start CTSS"
 runctss
