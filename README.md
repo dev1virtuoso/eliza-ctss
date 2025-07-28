@@ -39,6 +39,12 @@ If you just want to try ELIZA, follow the below steps to bring up CTSS
 and get ELIZA compiled and running. If you'd like to find out more
 about each step, see [`HACKING.md`](HACKING.md).
 
+### macOS Installation
+1. Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+2. Install dependencies: `brew install telnet git make gcc python3 expect`
+3. Run the setup script: `chmod +x setup-eliza-ctss.sh && ./setup-eliza-ctss.sh`
+4. Follow the interactive steps as prompted.
+
 1. Fetch this repo and set up the environment.
 
 ```
@@ -66,7 +72,7 @@ $ upload-all
 ```
 
 4. Start CTSS by typing `runctss`
-5. Start your telnet client and connect to localhost port 7094. For
+5. Use another Terminal window to start your telnet client and connect to localhost port 7094. For
 the command line client you can type `telnet 0 7094`.
 6. In the telnet session, type `login sysdev` and give the password `system`
 7. The screen should now look something like
@@ -139,6 +145,8 @@ Execute the following, pressing Enter after each non Control-C line.
 * Type `ek 40032`
 * Type `st`
 * Type `q` and Enter to exit.
+
+You may run the shut down script: `chmod +x shutdown-ctss.sh && ./shutdown-ctss.sh`
 
 18. If you want to run ELIZA again, do `runctss` and then telnet in as
 user `eliza` and `r eliza` like before. (You do not need to recompile it).
