@@ -1,49 +1,63 @@
 #!/bin/bash
 
+set -e
+
 if ! command -v brew &> /dev/null; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/opt/homebrew/bin/brew shellenv)" || eval "$(/usr/local/bin/brew shellenv)"
 else
     echo "Updating Homebrew..."
     brew update
 fi
 
 echo "Installing dependency tools..."
-brew install telnet git make gcc python3 expect || { echo "Dependency installation failed"; exit 1; }
+brew install telnet git make gcc python3 expect
 
+REPO_URL="https://github.com/dev1virtuoso/eliza-ctss.git"
 if [ ! -d "eliza-ctss" ]; then
     echo "Cloning eliza-ctss repository..."
-    git clone https://github.com/dev1virtuoso/eliza-ctss.git || { echo "Clone failed"; exit 1; }
+    git clone "$REPO_URL"
 fi
-cd eliza-ctss || { echo "Cannot enter directory"; exit 1; }
+cd eliza-ctss
 
 echo "Setting up environment..."
-source env.sh || { echo "Environment setup failed"; exit 1; }
+source env.sh
 
 for cmd in make-binaries make-disks installctss add-eliza-users upload-all; do
     echo "Running $cmd..."
-    $cmd || { echo "$cmd failed"; exit 1; }
+    $cmd
 done
 
 echo "Automating format-disks..."
 expect -c '
+    set timeout 60
     spawn ./format-disks
-    expect "Press Enter to continue" { send "\r" }
-    expect "Press Enter to continue" { send "\r" }
-    expect "Press q to quit" { send "q\r" }
-    expect eof
-' || { echo "format-disks failed"; exit 1; }
+    expect {
+        "Press Enter to continue" { send "\r"; exp_continue }
+        "Press q to quit" { send "q\r" }
+        eof
+    }
+'
 
 echo "Automating install-disk-loader..."
 expect -c '
+    set timeout 60
     spawn ./install-disk-loader
-    expect "Press Enter to continue" { send "\r" }
-    expect "Press Enter to continue" { send "\r" }
-    expect "Press q to quit" { send "q\r" }
-    expect eof
-' || { echo "install-disk-loader failed"; exit 1; }
+    expect {
+        "Press Enter to continue" { send "\r"; exp_continue }
+        "Press q to quit" { send "q\r" }
+        eof
+    }
+'
 
+echo "Starting CTSS..."
+runctss &
+
+sleep 5
+
+echo "Please do not close this window until you want to stop CTSS"
 echo "Setup complete! Please follow these steps:"
-echo "1. Start CTSS: 'runctss'"
-echo "2. Open a new terminal and connect via telnet: 'telnet 0 7094'"
-echo "3. Follow steps 6-15 in README.md to log in and run ELIZA"
+echo "1. Open a new terminal and connect via telnet: 'telnet 0 7094'"
+echo "2. Follow steps 6-15 in README.md to log in and run ELIZA"
+echo "To stop CTSS, run './shutdown-ctss.sh' or manually stop the emulator."
