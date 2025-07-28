@@ -45,6 +45,7 @@ about each step, see [`HACKING.md`](HACKING.md).
 3. Run the setup script: `chmod +x setup-eliza-ctss.sh && ./setup-eliza-ctss.sh`
 4. Follow the interactive steps as prompted.
 
+### Other platform Installation
 1. Fetch this repo and set up the environment.
 
 ```
@@ -146,7 +147,7 @@ Execute the following, pressing Enter after each non Control-C line.
 * Type `st`
 * Type `q` and Enter to exit.
 
-You may run the shut down script: `chmod +x shutdown-ctss.sh && ./shutdown-ctss.sh`
+If you are a macOS user, you may run the shut down script `chmod +x shutdown-ctss.sh && ./shutdown-ctss.sh`
 
 18. If you want to run ELIZA again, do `runctss` and then telnet in as
 user `eliza` and `r eliza` like before. (You do not need to recompile it).
