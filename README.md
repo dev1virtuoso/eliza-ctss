@@ -39,6 +39,8 @@ If you just want to try ELIZA, follow the below steps to bring up CTSS
 and get ELIZA compiled and running. If you'd like to find out more
 about each step, see [`HACKING.md`](HACKING.md).
 
+If you execute `install.sh` you can skip to step 2
+
 1. Fetch this repo and set up the environment.
 
 ```
