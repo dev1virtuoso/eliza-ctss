@@ -24,6 +24,11 @@ cd eliza-ctss
 echo "Setting up environment..."
 source env.sh
 
+for cmd in make-binaries make-disks; do
+    echo "Running $cmd..."
+    $cmd
+done
+
 echo "Automating format-disks..."
 expect -c '
     set timeout 60
@@ -34,11 +39,18 @@ expect -c '
         eof
     }
 '
-echo "Press Enter 4 times, then wait. When QUIT appears type q and press Enter"
 echo "Automating install-disk-loader..."
-install-disk-loader
+expect -c '
+    set timeout 60
+    spawn ./install-disk-loader
+    expect {
+        "Press Enter to continue" { send "\r"; exp_continue }
+        "Press q to quit" { send "q\r" }
+        eof
+    }
+'
 
-for cmd in make-binaries make-disks installctss add-eliza-users upload-all; do
+for cmd in installctss add-eliza-users upload-all; do
     echo "Running $cmd..."
     $cmd
 done
