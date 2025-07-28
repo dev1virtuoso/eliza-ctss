@@ -20,7 +20,6 @@ cd eliza-ctss || { echo "Cannot enter directory"; exit 1; }
 echo "Setting up environment..."
 source env.sh || { echo "Environment setup failed"; exit 1; }
 
-# Run non-interactive steps
 for cmd in make-binaries make-disks installctss add-eliza-users upload-all; do
     echo "Running $cmd..."
     $cmd || { echo "$cmd failed"; exit 1; }
