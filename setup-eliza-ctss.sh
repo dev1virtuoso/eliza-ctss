@@ -44,8 +44,8 @@ expect -c '
     set timeout 60
     spawn install-disk-loader
     expect {
-        "Press Enter 4 times" { send "\r\r\r\r" }
-        "IBM 7094-CTSS Simulator 2.4.4" { send "q\r" }
+        "IBM 7094-CTSS Simulator 2.4.4" { send "\r\r\r\r" ; exp_continue }
+        "QUIT" { send "q\r" }
         eof
     }
 '
