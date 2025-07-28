@@ -39,16 +39,17 @@ expect -c '
         eof
     }
 '
-
+echo "Press Enter 4 times, then wait. When QUIT appears type q and press Enter"
 echo "Automating install-disk-loader..."
-expect -c '
-    set timeout 60
-    spawn ./install-disk-loader
-    expect {
-        "Press q to quit" { send "q\r" }
-        eof
-    }
-'
+install-disk-loader
+
+echo "Installing CTSS and the ELIZA source"
+installctss
+add-eliza-users
+upload-all
+
+echo "Start CTSS"
+runctss
 
 echo "Please do not close this window until you want to stop CTSS"
 echo "Setup complete! Please follow these steps:"
