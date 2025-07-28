@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Check and install Homebrew
 if ! command -v brew &> /dev/null; then
     echo "Homebrew not installed, installing..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -9,20 +8,17 @@ else
     brew update
 fi
 
-# Install required dependencies
 echo "Installing dependency tools..."
 brew install telnet git make gcc python3 || {
     echo "Dependency installation failed, please check Homebrew configuration"
     exit 1
 }
 
-# Check Python version
 if ! python3 --version &> /dev/null; then
     echo "Python3 not installed correctly"
     exit 1
 fi
 
-# Clone the repository
 REPO_URL="https://github.com/rupertl/eliza-ctss.git"
 if [ ! -d "eliza-ctss" ]; then
     echo "Cloning eliza-ctss repository..."
@@ -37,7 +33,6 @@ cd eliza-ctss || {
     exit 1
 }
 
-# Set up environment and run non-interactive steps
 echo "Setting up environment..."
 source env.sh || {
     echo "Environment setup failed, please check env.sh"
@@ -56,7 +51,6 @@ make-disks || {
     exit 1
 }
 
-# Prompt user for interactive steps
 echo "Environment setup complete! Please follow these steps to continue:"
 echo "1. Run 'format-disks' and press Enter multiple times as prompted, then press q to exit"
 echo "2. Run 'install-disk-loader' and press Enter multiple times as prompted, then press q to exit"
