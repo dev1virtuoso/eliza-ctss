@@ -32,7 +32,7 @@ done
 echo "Automating format-disks..."
 expect -c '
     set timeout 60
-    spawn ./format-disks
+    spawn format-disks
     expect {
         "Press Enter to continue" { send "\r"; exp_continue }
         "Press q to quit" { send "q\r" }
@@ -42,7 +42,7 @@ expect -c '
 echo "Automating install-disk-loader..."
 expect -c '
     set timeout 60
-    spawn ./install-disk-loader
+    spawn install-disk-loader
     expect {
         "Press Enter to continue" { send "\r"; exp_continue }
         "Press q to quit" { send "q\r" }
