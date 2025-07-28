@@ -44,12 +44,10 @@ expect -c '
     set timeout 60
     spawn install-disk-loader
     expect {
-        ".st" { send "q\r" }
+        "IBM 7094-CTSS Simulator 2.4.4" { send "q\r" }
         eof
     }
 '
-
-
 
 for cmd in installctss add-eliza-users upload-all; do
     echo "Running $cmd..."
@@ -57,16 +55,7 @@ for cmd in installctss add-eliza-users upload-all; do
 done
 
 echo "Start CTSS"
-runctss
-
-echo "Please do not close this window until you want to stop CTSS"
-echo "Setup complete! Please follow these steps:"
-echo "1. Open a new terminal and connect via telnet: 'telnet 0 7094'"
-echo "2. Follow steps 6-15 in README.md to log in and run ELIZA"
-echo "To stop CTSS, run './shutdown-ctss.sh' or manually stop the emulator."
-
-echo "Starting CTSS..."
-runctss
+runctss &
 
 sleep 5
 
