@@ -58,4 +58,4 @@ echo "2. Follow steps 6-15 in README.md to log in and run ELIZA"
 echo "To stop CTSS, run './shutdown-ctss.sh' or manually stop the emulator."
 
 echo "Starting CTSS..."
-runctss &
+runctss
