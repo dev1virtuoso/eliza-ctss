@@ -45,7 +45,6 @@ expect -c '
     set timeout 60
     spawn ./install-disk-loader
     expect {
-        "Press Enter to continue" { send "\r"; exp_continue }
         "Press q to quit" { send "q\r" }
         eof
     }
