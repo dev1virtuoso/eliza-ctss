@@ -52,9 +52,10 @@ $ make-disks
 2. The next two commands will prompt you to press Enter a number of
 times and then `q` to quit.
 
-When `.st` shown, type `q` and press Enter to quit: `$ format-disks`
-
-When `IBM 7094-CTSS Simulator 2.4.4` shown, Press Enter 4 times, then wait. When `QUIT` appears type `q` and press Enter to quit: `install-disk-loader`
+```
+$ format-disks
+$ install-disk-loader
+```
 
 3. Continue installing CTSS and the ELIZA source.
 
@@ -65,7 +66,7 @@ $ upload-all
 ```
 
 4. Start CTSS by typing `runctss`
-5. Use another Terminal window to start your telnet client and connect to localhost port 7094. For
+5. Use another terminal window to start your telnet client and connect to localhost port 7094. For
 the command line client you can type `telnet 0 7094`.
 6. In the telnet session, type `login sysdev` and give the password `system`
 7. The screen should now look something like
