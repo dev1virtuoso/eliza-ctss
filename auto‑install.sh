@@ -1,21 +1,5 @@
 #!/usr/bin/env bash
-#
-#  auto‑install.sh
-#
-#  Creates the CTSS / ELIZA environment expected by the repo.
-#  Works on Linux / macOS / any POSIX shell that understands bash syntax.
-#
-#  Usage:
-#      ./auto-install.sh          # creates env.sh automatically
-#      source env.sh              # load the environment
-#
-#  Author: Rupert Lane   <rupert@timereshared.com>
-#  License: CC0
-#  -------------------------------------------------------------
 
-# ──────────────────────────────────────────────────────────────
-#  1. Create a fresh env.sh that mirrors the one shipped with the repo
-# ──────────────────────────────────────────────────────────────
 cat > env.sh <<'EOF'
 # Source this into your shell to set up PATH and locations of disks,
 # tapes etc
@@ -39,21 +23,12 @@ mkdir -p ${TMP}
 echo "CTSS environment set. DASD=${DASD} PORT=${PORT}"
 EOF
 
-# ──────────────────────────────────────────────────────────────
-#  2. Make the dirs that the repo expects
-# ──────────────────────────────────────────────────────────────
 mkdir -p dasd output tmp
 echo "Directories created (dasd, output, tmp)."
-
-# ──────────────────────────────────────────────────────────────
-#  3. Install the s709 emulator & ctss‑kit if missing
-# ──────────────────────────────────────────────────────────────
-# (This part is optional – if you already have them, the URLs will be ignored.)
 S709_URL="https://cozx.com/dpitts/tarballs/ibm709x/s709-2.4.3.tar.gz"
 CTSS_URL="https://cozx.com/dpitts/tarballs/ibm709x/ctss-1.0.7.kit.tar.gz"
 UTILS_URL="https://cozx.com/dpitts/tarballs/ibm709x/utils-1.1.14.tar.gz"
 
-# helper that extracts a tarball only if the destination dir does not exist
 extract_if_needed() {
     local url=$1 dest=$2
     if [ ! -d "$dest" ]; then
@@ -72,22 +47,16 @@ extract_if_needed() {
 extract_if_needed "$S709_URL" "s709"
 extract_if_needed "$CTSS_URL" "ctss"
 extract_if_needed "$UTILS_URL" "utils"
-
-# ──────────────────────────────────────────────────────────────
-#  4. Tell the user what to do next
-# ──────────────────────────────────────────────────────────────
 cat <<'EOL'
 
 ✔️  Environment set up!
-    1️⃣  Source the env.sh:   source env.sh
-    2️⃣  Build the binaries:  make-binaries
-    3️⃣  Format & install:    make-disks ; format-disks ; install-disk-loader
-    4️⃣  Install CTSS:        installctss
-    5️⃣  Add users:          add-eliza-users
-    6️⃣  Upload source:      upload-all
+    1️  Source the env.sh:   source env.sh
+    2️  Build the binaries:  make-binaries
+    3️  Format & install:    make-disks ; format-disks ; install-disk-loader
+    4️  Install CTSS:        installctss
+    5️  Add users:          add-eliza-users
+    6️  Upload source:      upload-all
 
 Now you can start CTSS with:
     runctss
-
-Happy ELIZA‑ming!  🎉
 EOL
