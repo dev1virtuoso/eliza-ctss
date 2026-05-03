@@ -1,9 +1,9 @@
 @'
+
 # The telnet port to connect to when CTSS is running. Change here if
 # desired.
 $env:PORT = 7094
 
-# You should not generally need to change any of these
 $env:PATH = "ctss/scripts;ctss/bin;eliza/bin;" + $env:PATH
 $env:TAPE = "ctss/tape"
 $env:CMD  = "ctss/cmd"
@@ -22,15 +22,30 @@ foreach ($d in $dirs) {
 Write-Host "Directories created (dasd, output, tmp)."
 
 function Extract-IfNeeded {
-    param([string]$Url, [string]$Dest)
+    param(
+        [Parameter(Mandatory)]
+        [string]$Url,
+        [Parameter(Mandatory)]
+        [string]$Dest
+    )
     if (-Not (Test-Path $Dest)) {
         Write-Host "Downloading $Url ..."
         $tmp = "$Dest.tar.gz"
-        Invoke-WebRequest -Uri $Url -OutFile $tmp
+        try {
+            Invoke-WebRequest -Uri $Url -OutFile $tmp -UseBasicParsing -ErrorAction Stop
+        } catch {
+            Write-Error "Download failed: $_"
+            exit 1
+        }
         Write-Host "Extracting to $Dest ..."
-        New-Item -ItemType Directory -Path $Dest | Out-Null
-        tar -xzf $tmp -C $Dest --strip-components=1
-        Remove-Item $tmp
+        New-Item -ItemType Directory -Force -Path $Dest | Out-Null
+        if (Get-Command tar -ErrorAction SilentlyContinue) {
+            tar -xzf $tmp -C $Dest --strip-components=1
+        } else {
+            # Fallback for plain Windows
+            Expand-Archive -Path $tmp -DestinationPath $Dest -Force
+        }
+        Remove-Item $tmp -Force
         Write-Host "Done."
     } else {
         Write-Host "$Dest already exists – skipping."
@@ -46,14 +61,14 @@ Extract-IfNeeded -Url $ctssUrl -Dest "ctss"
 Extract-IfNeeded -Url $utilsUrl -Dest "utils"
 
 Write-Host @"
-✔️  Environment set up!
-    1️  Source the env.ps1:   .\env.ps1
-    2️  Build the binaries:  make-binaries
-    3️  Format & install:    make-disks ; format-disks ; install-disk-loader
-    4️  Install CTSS:        installctss
-    5️  Add users:          add-eliza-users
-    6️  Upload source:      upload-all
+Environment set up!
+  1. Source the env.ps1:          .\env.ps1
+  2. Build the binaries:         make-binaries
+  3. Format & install:           make-disks ; format-disks ; install-disk-loader
+  4. Install CTSS:               installctss
+  5. Add users:                  add-eliza-users
+  6. Upload source:              upload-all
 
-Now start CTSS with:
-    runctss
+Now you can start CTSS with:
+  runctss
 "@
