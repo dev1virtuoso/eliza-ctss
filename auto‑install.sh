@@ -28,7 +28,7 @@ extract_if_needed() {
     if [ ! -d "$dest" ]; then
         echo "Downloading $url ..."
         if ! curl -sL -o "$dest.tar.gz" "$url"; then
-            echo "❌  Download failed: $url" >&2
+            echo "Download failed: $url" >&2
             exit 1
         fi
         echo "Extracting to $dest ..."
