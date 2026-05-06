@@ -39,6 +39,68 @@ If you just want to try ELIZA, follow the below steps to bring up CTSS
 and get ELIZA compiled and running. If you'd like to find out more
 about each step, see [`HACKING.md`](HACKING.md).
 
+### Auto-install
+
+For a fast, fully automated setup you can use the auto‑install scripts
+provided in this repository.
+
+### macOS / Linux
+
+```bash
+chmod +x auto-install.sh
+./auto-install.sh
+```
+
+The script will walk through all the build steps and report when it
+finishes. Once finished, start the emulator with:
+
+```bash
+runctss
+```
+
+Then open a second terminal and telnet to the emulator:
+
+```bash
+telnet 0 7094
+```
+
+Login with any of the users (`SYSDEV`, `SLIP`, `ELIZA`), passwords are
+the same as the login names, and start ELIZA with `r eliza`.
+
+---
+
+### Windows
+
+1. Install the telnet client (Windows 10: `Settings → Apps → Optional
+   Features → Telnet Client` or use PuTTY).  
+2. Open PowerShell, navigate to the repository root and run:
+
+```powershell
+# The script automatically sets the ExecutionPolicy for this session
+Set-ExecutionPolicy RemoteSigned -Scope Process
+.\auto-install.ps1
+```
+
+3. Start the emulator:
+
+```powershell
+runctss
+```
+
+4. Open a second PowerShell window and telnet:
+
+```powershell
+telnet 0 7094
+```
+
+5. Login as `SYSDEV`, `SLIP`, or `ELIZA` and run `r eliza`.
+
+> **Tip**: The `auto-install.ps1` script uses a small helper
+> (`run-telnet.ps1`) to send commands to the emulator, so you do not
+> need to type them manually.
+
+### Manual
+
 1. Fetch this repo and set up the environment.
 
 ```
