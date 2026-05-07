@@ -31,4 +31,6 @@ log "Uploading all source files..."
 upload-all
 log "Source files uploaded."
 
+runctss
+
 log "Please run the step 4 to step 17 on README.md"
