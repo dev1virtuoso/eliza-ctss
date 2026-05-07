@@ -30,5 +30,3 @@ Log "Adding ELIZA and SLIP users..."
 Log "Uploading all source files..."
 & .\upload-all.ps1
 Log "Source files uploaded."
-
-Log "Please run the step 4 to step 17 on README.md"
