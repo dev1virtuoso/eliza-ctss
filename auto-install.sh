@@ -31,14 +31,4 @@ log "Uploading all source files..."
 upload-all
 log "Source files uploaded."
 
-log "Compiling SLIP library – press Enter for each prompt and then 'q'..."
-./run-telnet.sh slip slip "RUNCOM MAKE"
-log "Compiling ELIZA – press Enter for each prompt and then 'q'..."
-./run-telnet.sh eliza eliza "RUNCOM MAKE"
-log "ELIZA compiled."
-
-log "All steps completed successfully!"
-log "To start the CTSS emulator, run: runctss"
-log "Then telnet to localhost port 7094 and log in as any of the CTSS users."
-log "Example: telnet 0 7094   then   login eliza   and   r eliza"
-log "Enjoy!"
+log "Please run the step 4 to step 17 on README.md"

@@ -1,3 +1,6 @@
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+
 function Log { param([string]$Msg) Write-Host "[auto-install] $Msg" -ForegroundColor Cyan }
 function Err { param([string]$Msg) Write-Host "[auto-install] ERROR: $Msg" -ForegroundColor Red; exit 1 }
 
@@ -28,14 +31,4 @@ Log "Uploading all source files..."
 & .\upload-all.ps1
 Log "Source files uploaded."
 
-Log "Compiling SLIP library – press Enter for each prompt and then 'q'..."
-.\run-telnet.ps1 -User slip -Pass slip -Command "RUNCOM MAKE"
-Log "Compiling ELIZA – press Enter for each prompt and then 'q'..."
-.\run-telnet.ps1 -User eliza -Pass eliza -Command "RUNCOM MAKE"
-Log "ELIZA compiled."
-
-Log "All steps completed successfully!"
-Log "To start the CTSS emulator, run: runctss"
-Log "Then telnet to localhost port 7094 and log in as any of the CTSS users."
-Log "Example: telnet 0 7094   then   login eliza   and   r eliza"
-Log "Enjoy!"
+Log "Please run the step 4 to step 17 on README.md"
