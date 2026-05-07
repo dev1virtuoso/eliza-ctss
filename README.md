@@ -48,6 +48,7 @@ provided in this repository.
 
 ```bash
 chmod +x auto-install.sh
+chmod +x run-telnet.sh
 ./auto-install.sh
 ```
 

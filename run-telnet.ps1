@@ -1,35 +1,25 @@
 param(
-    [string]$User,
-    [string]$Password,
-    [string]$Command
+    [Parameter(Mandatory)][string]$User,
+    [Parameter(Mandatory)][string]$Pass,
+    [Parameter(Mandatory)][string]$Command
 )
 
-$session = New-Object System.Net.Sockets.TcpClient
-$session.Connect("127.0.0.1", 7094)
-$stream  = $session.GetStream()
-$reader  = New-Object System.IO.StreamReader($stream)
-$writer  = New-Object System.IO.StreamWriter($stream)
+do { Start-Sleep -Seconds 1 } until (Test-NetConnection -ComputerName localhost -Port 7094 -InformationLevel Quiet)
+
+$client = New-Object System.Net.Sockets.TcpClient('127.0.0.1', 7094)
+$stream = $client.GetStream()
+$reader = New-Object System.IO.StreamReader($stream)
+$writer = New-Object System.IO.StreamWriter($stream)
 $writer.AutoFlush = $true
 
-# Read initial banner
 $reader.ReadLine() | Out-Null
-
-# Login
 $writer.WriteLine("login $User")
 $reader.ReadLine() | Out-Null
-$writer.WriteLine($Password)
+$writer.WriteLine($Pass)
 $reader.ReadLine() | Out-Null
-
-# Run the command
 $writer.WriteLine($Command)
-# Wait for command to finish – CTSS prints a line starting with 'R'
-while ($true) {
-    $line = $reader.ReadLine()
-    if ($line -match "^R") { break }
-}
-
-# Logout
+while ($true) { $line = $reader.ReadLine(); if ($line -match '^R') { break } }
 $writer.WriteLine("logout")
 $reader.ReadLine() | Out-Null
 
-$session.Close()
+$client.Close()
